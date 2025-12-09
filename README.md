@@ -87,13 +87,14 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 ---
 
 ## Repository Contents
-
-├── README.md                          # This file
-├── LICENSE                            # Proprietary license terms
-├── IP-DOCUMENTATION.md                # Intellectual property timeline and proof
-├── ACQUISITION-SUMMARY.md             # Executive overview for potential acquirers
-├── eioc-guard-public.html             # Assessment tool (proprietary)
-└── linkedin-eioc-post-2025-10-09.png  # Public disclosure proof
+```
+├── README.md                         # This file
+├── LICENSE                           # Proprietary license terms
+├── IP-DOCUMENTATION.md               # Intellectual property timeline and proof
+├── ACQUISITION-SUMMARY.md            # Executive overview for potential acquirers
+├── eioc-guard-public.html            # Assessment tool (proprietary)
+└── linkedin-eioc-post-2025-10-09.png # Public disclosure proof
+```
 
 ---
 
