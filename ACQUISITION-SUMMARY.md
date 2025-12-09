@@ -1,4 +1,4 @@
-# EIOC Guard™ — Executive Summary
+# EIOC Guard™—Executive Summary
 
 **Acquisition & Partnership Opportunity**
 
@@ -35,7 +35,7 @@ A proprietary taxonomy mapping emotional vulnerability states to technical explo
 | Empathic Camouflage | Help-desk manipulation | Snapchat W-2 breach |
 | Deference Drift | Authority exploitation | Toyota Boshoku ($37M loss) |
 
-**Stewardship Cues™** — Memorable defensive phrases that interrupt manipulation patterns in real-time.
+**Stewardship Cues™**—Memorable defensive phrases that interrupt manipulation patterns in real-time.
 
 ---
 
@@ -65,7 +65,7 @@ A proprietary taxonomy mapping emotional vulnerability states to technical explo
 - Common law trademark rights established
 - Copyright protection automatic
 - Trade secret protections in place
-- Prior art documented (LinkedIn August 2025, related published books)
+- Prior art documented (LinkedIn October 2025, related published books)
 
 **Freedom to Operate:** Web searches confirm no competing "Emotional Indicators of Compromise" frameworks exist. Terminology and methodology are original.
 
@@ -89,11 +89,11 @@ A proprietary taxonomy mapping emotional vulnerability states to technical explo
 
 ## Business Model Options
 
-1. **SaaS Platform** — Per-seat licensing to SMBs
-2. **Enterprise Licensing** — Annual contracts with large organizations
-3. **White-Label/OEM** — License to existing security awareness vendors
-4. **Channel Partnership** — Distribution through MSPs/MSSPs
-5. **Acquisition** — Full IP transfer to established player
+1. **SaaS Platform** – Per-seat licensing to SMBs
+2. **Enterprise Licensing** – Annual contracts with large organizations
+3. **White-Label/OEM** – License to existing security awareness vendors
+4. **Channel Partnership** – Distribution through MSPs/MSSPs
+5. **Acquisition** – Full IP transfer to established player
 
 ---
 
@@ -126,10 +126,10 @@ EIOC Guard™ aligns with Herjavec Group's portfolio and market position:
 - Certified Pharmacy Technician transitioning to cybersecurity
 - CompTIA certified (A+ through CySA+), AWS certified
 - Published author: 6 cybersecurity education books (Amazon KDP)
-- Founder: SoftArmorLabs (cybersecurity consulting, SMB focus)
-- Currently pursuing SANS certifications
+- Founder: Soft Armor Labs (cybersecurity consulting, SMB focus)
+- Currently pursuing Cloud certifications
 
-**Unique Perspective:** Background in healthcare (patient care), philosophy, and contemplative practices informs the "stewardship" approach to security — treating protection as care rather than control.
+**Unique Perspective:** Background in healthcare (patient care), philosophy, and contemplative practices informs the "stewardship" approach to security—treating protection as care rather than control.
 
 ---
 
@@ -142,11 +142,11 @@ Interested parties are invited to:
 3. **Explore** licensing, partnership, or acquisition terms
 
 **Contact:**
-- Email: acquisitions@softarmorlabs.com
+- Email: narnaiezzsshaa@gmail.com
 - Location: Texas, United States
 
 ---
 
 *Confidential — For Evaluation Purposes Only*
 
-© 2024-2025 SoftArmorLabs. All Rights Reserved.
+© 2024-2025 Soft Armor Labs. All Rights Reserved.
