@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIOC Guard: Emotional Deterrence Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .eioc-card {
+                padding: 20px 15px;
+            }
+            
+            .scenario, .case-study {
+                padding: 15px;
+            }
+            
+            .response-option {
+                padding: 12px;
+                font-size: 0.95em;
+                margin-bottom: 8px;
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 30px;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 18px 15px;
+                font-size: 1.1em;
+                min-height: 54px;
+                font-weight: 700;
+            }
+            
+            /* Ensure vulnerability scale is always visible */
+            .vulnerability-scale {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .scale-option {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                margin: 5px;
+            }
+            
+            .content {
+                padding: 15px 10px;
+            }
+            
+            .btn {
+                padding: 20px 15px;
+                font-size: 1.2em;
+                min-height: 60px;
+            }
+        }
+        
+        .eioc-card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+        
+        .eioc-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .eioc-mapping {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .stewardship-cue {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #2e7d32;
+            margin: 15px 0;
+        }
+        
+        .scenario {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .scenario h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .case-study {
+            background: #f8d7da;
+            border: 1px solid #dc3545;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        
+        .case-study strong {
+            color: #721c24;
+        }
+        
+        .question {
+            margin: 25px 0;
+        }
+        
+        .question h4 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .response-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .response-option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .response-option:hover {
+            border-color: #667eea;
+            background: #f0f2ff;
+        }
+        
+        .response-option.selected {
+            border-color: #667eea;
+            background: #e8efff;
+        }
+        
+        .response-option.correct {
+            border-color: #4caf50;
+            background: #e8f5e8;
+        }
+        
+        .response-option.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+        
+        .vulnerability-scale {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin: 20px 0;
+            width: 100%;
+        }
+        
+        .scale-option {
+            padding: 12px 4px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85em;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Mobile responsive scaling */
+        @media (max-width: 600px) {
+            .vulnerability-scale {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 4px;
+            }
+            
+            .scale-option {
+                padding: 8px 2px;
+                font-size: 0.75em;
+                min-height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .vulnerability-scale {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 3px;
+            }
+            
+            .scale-option {
+                padding: 6px 1px;
+                font-size: 0.7em;
+                min-height: 40px;
+            }
+        }
+        
+        .scale-option:hover {
+            border-color: #667eea;
+        }
+        
+        .scale-option.selected {
+            border-color: #667eea;
+            background: #e8efff;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .results {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 30px;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .score-number {
+            font-size: 1.4em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        
+        .score-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .heuristic {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #667eea;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 8px;
+        }
+        
+        .recommendations {
+            text-align: left;
+            margin-top: 30px;
+        }
+        
+        .recommendations h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .recommendations li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .recommendations li:before {
+            content: "🛡️ ";
+            margin-right: 10px;
+        }
+
+        /* Copyright footer styling */
+        .copyright-footer {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: #ecf0f1;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+        
+        .copyright-footer .logo-text {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .copyright-footer .main-copyright {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .copyright-footer .contact-line {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+        }
+        
+        .copyright-footer .contact-line a {
+            color: #82c8f2;
+            text-decoration: none;
+        }
+        
+        .copyright-footer .contact-line a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright-footer .legal-text {
+            font-size: 0.85em;
+            color: #bdc3c7;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .copyright-footer .trademarks {
+            font-size: 0.8em;
+            color: #95a5a6;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ EIOC Guard</h1>
+            <p>Emotional Deterrence Assessment: Working with human psychology, not against it</p>
+            <div style="margin-top: 15px;">
+                <button id="headerRestartBtn" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 18px; border-radius: 4px; cursor: pointer; font-size: 0.85em; transition: all 0.3s ease; touch-action: manipulation; -webkit-tap-highlight-color: transparent;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">↻ Start Over</button>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <!-- Introduction -->
+            <div class="step active" id="step0">
+                <h2>Welcome to Your Emotional Security Assessment</h2>
+                <p>Social engineers succeed not by exploiting technical vulnerabilities, but by manipulating our natural human emotions and instincts.</p>
+                
+                <p style="margin: 20px 0;">This assessment will help you recognize <strong>Emotional Indicators of Compromise (EIOCs)</strong> - the psychological states that attackers create to bypass your rational defenses.</p>
+                
+                <div class="heuristic">
+                    <em>"Power wears many masks. Urgency is not trust. Pause, then protect."</em>
+                </div>
+                
+                <p>You'll learn about five critical emotional vulnerabilities and develop practical stewardship skills to protect yourself and your organization.</p>
+                
+                <p><strong>How it works:</strong></p>
+                <ul style="text-align: left; max-width: 500px; margin: 20px auto;">
+                    <li>5 interactive scenarios testing different emotional vulnerabilities</li>
+                    <li>Self-assessment of your responses to various manipulation tactics</li>
+                    <li>Personalized recommendations based on your unique profile</li>
+                    <li>Educational insights, not clinical diagnosis</li>
+                </ul>
+                
+                <p><strong>Time required:</strong> 5-10 minutes<br>
+                <strong>Goal:</strong> Build self-awareness and emotional resilience</p>
+            </div>
+            
+            <!-- EIOC 1: Prestige Mirage -->
+            <div class="step" id="step1">
+                <div class="eioc-card">
+                    <div class="eioc-title">🎭 Prestige Mirage</div>
+                    <div class="eioc-mapping">Technical Mapping: Status-Based Exploit</div>
+                    
+                    <p>Attackers impersonate high-status individuals or leverage implied authority to bypass normal verification processes.</p>
+                    
+                    <div class="stewardship-cue">
+                        🛡️ Stewardship Cue: "Signal is earned, not borrowed."
+                    </div>
+                    
+                    <div class="case-study">
+                        <strong>Real Impact:</strong> Barbara Corcoran's assistant received an email appearing to be from Barbara, requesting a $388,000 wire transfer for a real estate investment. The familiar tone and apparent authority nearly succeeded.
+                    </div>
+                </div>
+                
+                <div class="scenario">
+                    <h4>📧 Scenario: The Executive Request</h4>
+                    <p>You receive an email from your company's CEO asking you to urgently purchase $5,000 in gift cards for a client appreciation event. The email mentions it's confidential and time-sensitive. The CEO's assistant is copied on the email.</p>
+                </div>
+                
+                <div class="question">
+                    <h4>What's your first response?</h4>
+                    <div class="response-options">
+                        <div class="response-option" data-correct="false">Purchase the gift cards immediately - the CEO needs them urgently</div>
+                        <div class="response-option" data-correct="false">Forward the email to IT to check if it's legitimate</div>
+                        <div class="response-option" data-correct="true">Call the CEO or assistant directly using a known number to verify the request</div>
+                        <div class="response-option" data-correct="false">Reply to the email asking for more details about the event</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>How susceptible are you to authority-based requests?</h4>
+                    <div class="vulnerability-scale">
+                        <div class="scale-option" data-value="1">Very Low</div>
+                        <div class="scale-option" data-value="2">Low</div>
+                        <div class="scale-option" data-value="3">Moderate</div>
+                        <div class="scale-option" data-value="4">High</div>
+                        <div class="scale-option" data-value="5">Very High</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EIOC 2: Familiarity Shortcut -->
+            <div class="step" id="step2">
+                <div class="eioc-card">
+                    <div class="eioc-title">🤝 Familiarity Shortcut</div>
+                    <div class="eioc-mapping">Technical Mapping: Implicit Trust Injection</div>
+                    
+                    <p>Attackers create false familiarity through personal details, shared connections, or mimicking communication styles to shortcut trust-building.</p>
+                    
+                    <div class="stewardship-cue">
+                        🛡️ Stewardship Cue: "Pause before you mirror."
+                    </div>
+                    
+                    <div class="case-study">
+                        <strong>Real Impact:</strong> Cabarrus County lost $1.7 million when attackers impersonated a familiar supplier, using correct project details and communication patterns to convince staff to update payment information.
+                    </div>
+                </div>
+                
+                <div class="scenario">
+                    <h4>📱 Scenario: The Helpful Colleague</h4>
+                    <p>You receive a call from someone claiming to be from your IT department. They know your name, department, and mention a recent system upgrade you experienced. They're asking for your password to "complete the security update on your account."</p>
+                </div>
+                
+                <div class="question">
+                    <h4>What makes this scenario potentially dangerous?</h4>
+                    <div class="response-options">
+                        <div class="response-option" data-correct="false">They called during business hours</div>
+                        <div class="response-option" data-correct="true">They used specific details to create false familiarity and trust</div>
+                        <div class="response-option" data-correct="false">They mentioned a security update</div>
+                        <div class="response-option" data-correct="false">They knew your department</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>How often do you verify identity when someone demonstrates familiarity with you or your work?</h4>
+                    <div class="vulnerability-scale">
+                        <div class="scale-option" data-value="1">Always</div>
+                        <div class="scale-option" data-value="2">Usually</div>
+                        <div class="scale-option" data-value="3">Sometimes</div>
+                        <div class="scale-option" data-value="4">Rarely</div>
+                        <div class="scale-option" data-value="5">Never</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EIOC 3: Performance Reflex -->
+            <div class="step" id="step3">
+                <div class="eioc-card">
+                    <div class="eioc-title">⚡ Performance Reflex</div>
+                    <div class="eioc-mapping">Technical Mapping: Urgency Trigger Exploit</div>
+                    
+                    <p>Attackers create artificial time pressure to force quick decisions and bypass normal verification processes.</p>
+                    
+                    <div class="stewardship-cue">
+                        🛡️ Stewardship Cue: "Urgency is not a credential."
+                    </div>
+                    
+                    <div class="case-study">
+                        <strong>Real Impact:</strong> Centrify was targeted with an urgent wire transfer request appearing to be from their CEO, claiming a time-sensitive acquisition deal required immediate payment.
+                    </div>
+                </div>
+                
+                <div class="scenario">
+                    <h4>🚨 Scenario: The Deadline Pressure</h4>
+                    <p>You receive an urgent email marked "CONFIDENTIAL - RESPOND IMMEDIATELY" from your manager, requesting you to quickly transfer funds to close a last-minute deal. The email mentions that "every minute counts" and that you should "call me after it's done, not before."</p>
+                </div>
+                
+                <div class="question">
+                    <h4>What's the strongest red flag in this scenario?</h4>
+                    <div class="response-options">
+                        <div class="response-option" data-correct="false">The confidential marking</div>
+                        <div class="response-option" data-correct="true">Instructions to act first and verify later</div>
+                        <div class="response-option" data-correct="false">The mention of a business deal</div>
+                        <div class="response-option" data-correct="false">The urgent timeline pressure</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>How does time pressure affect your decision-making?</h4>
+                    <div class="vulnerability-scale">
+                        <div class="scale-option" data-value="1">Makes me more careful</div>
+                        <div class="scale-option" data-value="2">Doesn't affect me much</div>
+                        <div class="scale-option" data-value="3">Sometimes I rush</div>
+                        <div class="scale-option" data-value="4">Often makes me hasty</div>
+                        <div class="scale-option" data-value="5">I always rush under pressure</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EIOC 4: Empathic Camouflage -->
+            <div class="step" id="step4">
+                <div class="eioc-card">
+                    <div class="eioc-title">💝 Empathic Camouflage</div>
+                    <div class="eioc-mapping">Technical Mapping: Affinity Bias Pretexting</div>
+                    
+                    <p>Attackers exploit our natural desire to help others, creating scenarios that make refusal feel cruel or unprofessional.</p>
+                    
+                    <div class="stewardship-cue">
+                        🛡️ Stewardship Cue: "Familiar warmth may conceal cold intent."
+                    </div>
+                    
+                    <div class="case-study">
+                        <strong>Real Impact:</strong> Snapchat's HR department released employee W-2 forms after receiving a request that appeared to be from their CEO, exploiting their desire to be helpful and responsive to executive needs.
+                    </div>
+                </div>
+                
+                <div class="scenario">
+                    <h4>💔 Scenario: The Personal Emergency</h4>
+                    <p>You receive an emotional email from someone claiming to be a colleague's spouse, explaining that your colleague is in the hospital and they need access to important work files to handle insurance paperwork. They're asking for login credentials and seem genuinely distressed.</p>
+                </div>
+                
+                <div class="question">
+                    <h4>What's the appropriate response to this emotional appeal?</h4>
+                    <div class="response-options">
+                        <div class="response-option" data-correct="false">Provide the login information immediately - they're in crisis</div>
+                        <div class="response-option" data-correct="true">Express concern but verify through official channels before providing any access</div>
+                        <div class="response-option" data-correct="false">Ask them to prove their identity with personal questions</div>
+                        <div class="response-option" data-correct="false">Ignore the request - it's probably fake</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>How difficult is it for you to say no to emotional appeals for help?</h4>
+                    <div class="vulnerability-scale">
+                        <div class="scale-option" data-value="1">Very Easy</div>
+                        <div class="scale-option" data-value="2">Easy</div>
+                        <div class="scale-option" data-value="3">Moderate</div>
+                        <div class="scale-option" data-value="4">Difficult</div>
+                        <div class="scale-option" data-value="5">Very Difficult</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EIOC 5: Deference Drift -->
+            <div class="step" id="step5">
+                <div class="eioc-card">
+                    <div class="eioc-title">👔 Deference Drift</div>
+                    <div class="eioc-mapping">Technical Mapping: Authority Spoof Lever</div>
+                    
+                    <p>Attackers exploit organizational hierarchies and cultural norms that discourage questioning authority figures.</p>
+                    
+                    <div class="stewardship-cue">
+                        🛡️ Stewardship Cue: "Stewardship honors questions."
+                    </div>
+                    
+                    <div class="case-study">
+                        <strong>Real Impact:</strong> Toyota Boshoku lost $37 million when employees received what appeared to be executive instructions for urgent financial transfers, with organizational culture discouraging questions about senior leadership decisions.
+                    </div>
+                </div>
+                
+                <div class="scenario">
+                    <h4>📊 Scenario: The Board Directive</h4>
+                    <p>You receive what appears to be a directive from your company's board of directors, marked "CONFIDENTIAL - BOARD EYES ONLY," instructing you to prepare financial transfers for a merger discussion. It emphasizes discretion and warns against discussing it with anyone, including your direct supervisor.</p>
+                </div>
+                
+                <div class="question">
+                    <h4>What's the most appropriate action?</h4>
+                    <div class="response-options">
+                        <div class="response-option" data-correct="false">Follow the directive immediately - you can't question the board</div>
+                        <div class="response-option" data-correct="false">Ask a trusted colleague what they think</div>
+                        <div class="response-option" data-correct="true">Verify through established company protocols, regardless of the secrecy request</div>
+                        <div class="response-option" data-correct="false">Wait to see if anyone else received similar instructions</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>How comfortable are you questioning instructions from senior leadership?</h4>
+                    <div class="vulnerability-scale">
+                        <div class="scale-option" data-value="1">Very Comfortable</div>
+                        <div class="scale-option" data-value="2">Comfortable</div>
+                        <div class="scale-option" data-value="3">Neutral</div>
+                        <div class="scale-option" data-value="4">Uncomfortable</div>
+                        <div class="scale-option" data-value="5">Very Uncomfortable</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="step" id="results">
+                <div class="results">
+                    <h2>Your Emotional Security Assessment</h2>
+                    
+                    <div class="score-circle">
+                        <div class="score-number" id="totalScore">--</div>
+                        <div class="score-label">Emotional Security</div>
+                    </div>
+                    
+                    <div class="heuristic">
+                        <em>"Power wears many masks. Urgency is not trust. Pause, then protect."</em>
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: #f0f8ff; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <h4>Understanding Your Assessment</h4>
+                        <p><strong>This assessment measures your awareness of emotional manipulation patterns</strong> that social engineers commonly exploit. Your readiness level reflects how well you recognize and respond to these tactics.</p>
+                        <p><strong>Remember:</strong> Emotional security is a learnable skill. The goal is building awareness and developing practical defenses against manipulation.</p>
+                    </div>
+                    
+                    <div class="recommendations">
+                        <h3>Your Personal Development Focus Areas</h3>
+                        <ul id="recommendationsList">
+                            <!-- Recommendations will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <h4>Share This Assessment</h4>
+                        <p>Know someone who could benefit from understanding emotional manipulation tactics? Share this free resource with them.</p>
+                        <p style="margin-top: 15px;"><strong>For organizational training or curriculum licensing, contact SoftArmorLabs.</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                <button class="btn btn-primary" id="nextBtn">Begin Assessment</button>
+                <button class="btn btn-primary" id="finishBtn" style="display: none;">View Results</button>
+                <button class="btn btn-primary" id="restartBtn" style="display: none;">Take Assessment Again</button>
+            </div>
+        </div>
+        
+        <!-- Prominent Copyright Footer -->
+        <div class="copyright-footer">
+            <div class="logo-text">🛡️ SoftArmorLabs</div>
+            
+            <div class="main-copyright">
+                <strong>© 2024-2025 SoftArmorLabs. All Rights Reserved.</strong>
+            </div>
+            
+            <div class="contact-line">
+                <strong>Contact:</strong> <a href="mailto:info@softarmorlabs.com">info@softarmorlabs.com</a><br>
+                <strong>Licensing & Partnerships:</strong> <a href="mailto:partnerships@softarmorlabs.com">partnerships@softarmorlabs.com</a>
+            </div>
+            
+            <div class="legal-text">
+                <strong>EIOC Guard™</strong>, the <strong>Emotional Indicators of Compromise™</strong> framework, 
+                <strong>Stewardship Cues™</strong> methodology, and all associated content are proprietary 
+                intellectual property of SoftArmorLabs.<br><br>
+                This assessment is provided free for personal and educational use. 
+                Commercial use, reproduction, or derivative works require written authorization.
+            </div>
+            
+            <div class="trademarks">
+                EIOC Guard™ • Emotional Indicators of Compromise™ • Stewardship Cues™ • Emotional Deterrence Primer™
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        const totalSteps = 6;
+        let answers = {};
+        let vulnerabilityScores = {};
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showStep(stepNum) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            const targetStep = document.getElementById(`step${stepNum}`);
+            if (targetStep) {
+                targetStep.classList.add('active');
+            } else if (stepNum === totalSteps + 1) {
+                const resultsStep = document.getElementById('results');
+                if (resultsStep) {
+                    resultsStep.classList.add('active');
+                }
+            }
+            
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const finishBtn = document.getElementById('finishBtn');
+            const restartBtn = document.getElementById('restartBtn');
+            
+            if (prevBtn) prevBtn.style.display = stepNum > 0 ? 'inline-block' : 'none';
+            
+            if (stepNum === 0) {
+                if (nextBtn) {
+                    nextBtn.textContent = 'Begin Assessment';
+                    nextBtn.style.display = 'inline-block';
+                }
+                if (finishBtn) finishBtn.style.display = 'none';
+                if (restartBtn) restartBtn.style.display = 'none';
+            } else if (stepNum === totalSteps) {
+                if (nextBtn) nextBtn.style.display = 'none';
+                if (finishBtn) finishBtn.style.display = 'inline-block';
+                if (restartBtn) restartBtn.style.display = 'none';
+            } else if (stepNum === totalSteps + 1) {
+                if (nextBtn) nextBtn.style.display = 'none';
+                if (finishBtn) finishBtn.style.display = 'none';
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (restartBtn) restartBtn.style.display = 'inline-block';
+            } else {
+                if (nextBtn) {
+                    nextBtn.textContent = 'Next';
+                    nextBtn.style.display = 'inline-block';
+                }
+                if (finishBtn) finishBtn.style.display = 'none';
+                if (restartBtn) restartBtn.style.display = 'none';
+            }
+            
+            updateProgress();
+        }
+
+        function changeStep(direction) {
+            if (direction === 1 && currentStep > 0 && currentStep <= totalSteps) {
+                const currentStepElement = document.getElementById(`step${currentStep}`);
+                if (!currentStepElement) return;
+                
+                const responseOptions = currentStepElement.querySelectorAll('.response-option.selected');
+                const scaleOptions = currentStepElement.querySelectorAll('.scale-option.selected');
+                
+                if (responseOptions.length === 0 && scaleOptions.length === 0) {
+                    showValidationError('Please answer both questions before continuing.');
+                    return;
+                } else if (responseOptions.length === 0) {
+                    showValidationError('Please select an answer for the scenario question.');
+                    return;
+                } else if (scaleOptions.length === 0) {
+                    showValidationError('Please rate your vulnerability level on the scale.');
+                    return;
+                }
+            }
+            
+            if (direction === 1 && currentStep < totalSteps) {
+                currentStep++;
+            } else if (direction === -1 && currentStep > 0) {
+                currentStep--;
+            }
+            
+            showStep(currentStep);
+        }
+
+        function showValidationError(message) {
+            const existingError = document.getElementById('validationError');
+            if (existingError) existingError.remove();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.id = 'validationError';
+            errorDiv.innerHTML = `
+                <div style="
+                    background: #f8d7da;
+                    color: #721c24;
+                    border: 1px solid #dc3545;
+                    border-radius: 6px;
+                    padding: 15px;
+                    margin: 20px 0;
+                    font-weight: 600;
+                    text-align: center;
+                    animation: shake 0.5s ease-in-out;
+                ">
+                    ⚠️ ${message}
+                </div>
+            `;
+            
+            const buttonsDiv = document.querySelector('.buttons');
+            buttonsDiv.parentNode.insertBefore(errorDiv, buttonsDiv);
+            
+            setTimeout(() => {
+                if (document.getElementById('validationError')) {
+                    document.getElementById('validationError').remove();
+                }
+            }, 5000);
+        }
+
+        function clearValidationError() {
+            const existingError = document.getElementById('validationError');
+            if (existingError) existingError.remove();
+        }
+
+        function handleSelection(e) {
+            e.preventDefault();
+            
+            if (e.target.classList.contains('response-option')) {
+                const parent = e.target.parentElement;
+                const stepId = e.target.closest('.step').id;
+                
+                parent.querySelectorAll('.response-option').forEach(option => {
+                    option.classList.remove('selected');
+                    option.style.backgroundColor = 'white';
+                    option.style.borderColor = '#e0e0e0';
+                });
+                
+                e.target.classList.add('selected');
+                e.target.style.backgroundColor = '#e8efff';
+                e.target.style.borderColor = '#667eea';
+                
+                answers[stepId] = e.target.dataset.correct === 'true';
+                clearValidationError();
+            }
+            
+            if (e.target.classList.contains('scale-option')) {
+                const parent = e.target.parentElement;
+                const stepId = e.target.closest('.step').id;
+                
+                parent.querySelectorAll('.scale-option').forEach(option => {
+                    option.classList.remove('selected');
+                    option.style.backgroundColor = 'white';
+                    option.style.borderColor = '#e0e0e0';
+                });
+                
+                e.target.classList.add('selected');
+                e.target.style.backgroundColor = '#e8efff';
+                e.target.style.borderColor = '#667eea';
+                
+                vulnerabilityScores[stepId] = parseInt(e.target.dataset.value);
+                clearValidationError();
+            }
+        }
+        
+        document.addEventListener('click', handleSelection);
+        document.addEventListener('touchend', handleSelection);
+
+        function restartAssessment() {
+            currentStep = 0;
+            answers = {};
+            vulnerabilityScores = {};
+            
+            document.querySelectorAll('.response-option, .scale-option').forEach(option => {
+                option.classList.remove('selected');
+                option.style.backgroundColor = '';
+                option.style.borderColor = '';
+            });
+            
+            const existingBreakdown = document.getElementById('eioc-breakdown');
+            if (existingBreakdown) existingBreakdown.remove();
+            
+            const existingDescription = document.getElementById('readiness-description');
+            if (existingDescription) existingDescription.remove();
+            
+            clearValidationError();
+            showStep(0);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showStep(0);
+            
+            const headerRestartBtn = document.getElementById('headerRestartBtn');
+            if (headerRestartBtn) {
+                headerRestartBtn.addEventListener('click', (e) => { e.preventDefault(); restartAssessment(); });
+            }
+            
+            const prevBtn = document.getElementById('prevBtn');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => changeStep(-1));
+            }
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => changeStep(1));
+            }
+            
+            const finishBtn = document.getElementById('finishBtn');
+            if (finishBtn) {
+                finishBtn.addEventListener('click', (e) => { e.preventDefault(); showResults(); });
+            }
+            
+            const restartBtn = document.getElementById('restartBtn');
+            if (restartBtn) {
+                restartBtn.addEventListener('click', (e) => { e.preventDefault(); restartAssessment(); });
+            }
+        });
+
+        function showResults() {
+            currentStep = totalSteps + 1;
+            showStep(currentStep);
+            setTimeout(() => { populateResults(); }, 150);
+        }
+
+        function populateResults() {
+            try {
+                const defaultScores = { 'step1': 3, 'step2': 3, 'step3': 3, 'step4': 3, 'step5': 3 };
+                const finalScores = { ...defaultScores, ...vulnerabilityScores };
+                
+                const totalVulnerability = Object.values(finalScores).reduce((sum, score) => sum + score, 0);
+                const avgVulnerability = totalVulnerability / Object.keys(finalScores).length;
+                
+                let readinessLevel, readinessColor, readinessDescription;
+                
+                if (avgVulnerability <= 2.5) {
+                    readinessLevel = "Emotionally Aware";
+                    readinessColor = "#4caf50";
+                    readinessDescription = "You recognize manipulation tactics well and maintain strong protective boundaries.";
+                } else if (avgVulnerability <= 3.5) {
+                    readinessLevel = "Developing Readiness";
+                    readinessColor = "#ff9800";
+                    readinessDescription = "You have good instincts with opportunities to strengthen your emotional defenses.";
+                } else {
+                    readinessLevel = "Building Awareness";
+                    readinessColor = "#2196f3";
+                    readinessDescription = "You're developing skills to recognize and resist emotional manipulation tactics.";
+                }
+                
+                const scoreElement = document.getElementById('totalScore');
+                const scoreLabelElement = document.querySelector('.score-label');
+                if (scoreElement && scoreLabelElement) {
+                    scoreElement.textContent = readinessLevel;
+                    scoreElement.style.fontSize = '1.5em';
+                    scoreElement.style.lineHeight = '1.2';
+                    scoreLabelElement.textContent = 'Emotional Security';
+                    
+                    const scoreCircle = document.querySelector('.score-circle');
+                    if (scoreCircle) scoreCircle.style.background = readinessColor;
+                }
+                
+                const existingDescription = document.getElementById('readiness-description');
+                if (existingDescription) existingDescription.remove();
+                
+                const readinessDescDiv = `
+                    <div id="readiness-description" style="
+                        margin: 20px 0; 
+                        padding: 20px; 
+                        background: #f8f9fa; 
+                        border-radius: 8px; 
+                        border-left: 4px solid ${readinessColor};
+                        text-align: center;
+                    ">
+                        <h4 style="color: ${readinessColor}; margin-bottom: 10px;">${readinessLevel}</h4>
+                        <p style="color: #495057; font-style: italic;">${readinessDescription}</p>
+                    </div>
+                `;
+                
+                const heuristicDiv = document.querySelector('.heuristic');
+                if (heuristicDiv) heuristicDiv.insertAdjacentHTML('afterend', readinessDescDiv);
+                
+                insertEIOCBreakdown(finalScores);
+                populateRecommendations(finalScores);
+                
+            } catch (error) {
+                console.error('Results population error:', error);
+            }
+        }
+
+        function insertEIOCBreakdown(scores) {
+            const existingBreakdown = document.getElementById('eioc-breakdown');
+            if (existingBreakdown) existingBreakdown.remove();
+            
+            const eiocLabels = {
+                'step1': '🎭 Prestige Mirage',
+                'step2': '🤝 Familiarity Shortcut', 
+                'step3': '⚡ Performance Reflex',
+                'step4': '💝 Empathic Camouflage',
+                'step5': '👔 Deference Drift'
+            };
+            
+            let eiocBreakdown = '<div style="margin: 30px 0;" id="eioc-breakdown"><h4 style="color: #2c3e50; margin-bottom: 15px;">Your EIOC Profile:</h4>';
+            
+            for (let step in scores) {
+                const score = scores[step];
+                const label = eiocLabels[step] || `Unknown (${step})`;
+                const level = score <= 2 ? 'Low Risk' : score <= 3 ? 'Moderate Risk' : 'Higher Risk';
+                const color = score <= 2 ? '#4caf50' : score <= 3 ? '#ff9800' : '#f44336';
+                
+                eiocBreakdown += `
+                    <div style="margin: 10px 0; padding: 15px; border-left: 4px solid ${color}; background: #f9f9f9; border-radius: 4px;">
+                        <strong style="color: #333;">${label}:</strong> 
+                        <span style="color: ${color}; font-weight: bold;">${level}</span> 
+                        <span style="color: #666;">(${score}/5)</span>
+                    </div>
+                `;
+            }
+            eiocBreakdown += '</div>';
+            
+            const recommendationsDiv = document.querySelector('.recommendations');
+            if (recommendationsDiv) recommendationsDiv.insertAdjacentHTML('beforebegin', eiocBreakdown);
+        }
+
+        function populateRecommendations(scores) {
+            const recommendations = generateRecommendationsWithScores(scores);
+            const listElement = document.getElementById('recommendationsList');
+            if (listElement) {
+                listElement.innerHTML = '';
+                recommendations.forEach((rec) => {
+                    const li = document.createElement('li');
+                    li.textContent = rec;
+                    li.style.marginBottom = '10px';
+                    li.style.lineHeight = '1.5';
+                    listElement.appendChild(li);
+                });
+            }
+        }
+
+        function generateRecommendationsWithScores(scores) {
+            const recommendations = [];
+            const avgVulnerability = Object.values(scores).reduce((sum, score) => sum + score, 0) / Object.keys(scores).length;
+            
+            if (scores.step1 >= 4) {
+                recommendations.push("🎭 Prestige Mirage - Develop Authority Awareness: Practice the stewardship mindset - 'Signal is earned, not borrowed.' Build verification habits for high-status requests.");
+            } else if (scores.step1 <= 2) {
+                recommendations.push("🎭 Prestige Mirage - Strength Area: You naturally question authority-based requests. This healthy skepticism protects you and your organization.");
+            } else {
+                recommendations.push("🎭 Prestige Mirage - Growing Awareness: Continue developing skills to verify authority-based requests through independent channels.");
+            }
+            
+            if (scores.step2 >= 4) {
+                recommendations.push("🤝 Familiarity Shortcut - Build Trust Boundaries: Strengthen your 'pause before you mirror' reflex. Create verification steps even when someone seems familiar.");
+            } else if (scores.step2 <= 2) {
+                recommendations.push("🤝 Familiarity Shortcut - Strength Area: You maintain appropriate skepticism of familiar-seeming strangers. This protective instinct serves you well.");
+            } else {
+                recommendations.push("🤝 Familiarity Shortcut - Developing Skills: Practice recognizing when unfamiliar people demonstrate unusual knowledge about you or your work.");
+            }
+            
+            if (scores.step3 >= 4) {
+                recommendations.push("⚡ Performance Reflex - Master Urgency Response: Build 'cooling-off' periods into urgent decisions. Remember: 'Urgency is not a credential' for bypassing verification.");
+            } else if (scores.step3 <= 2) {
+                recommendations.push("⚡ Performance Reflex - Strength Area: You handle time pressure without compromising security. This measured approach is an excellent protective skill.");
+            } else {
+                recommendations.push("⚡ Performance Reflex - Strengthening Skills: Develop standard procedures for handling urgent requests while maintaining appropriate verification.");
+            }
+            
+            if (scores.step4 >= 4) {
+                recommendations.push("💝 Empathic Camouflage - Develop Helpful Boundaries: Practice compassionate verification scripts: 'I want to help, let me verify this through proper channels first.'");
+            } else if (scores.step4 <= 2) {
+                recommendations.push("💝 Empathic Camouflage - Strength Area: You balance empathy with protective boundaries. This skill helps both you and those you're genuinely helping.");
+            } else {
+                recommendations.push("💝 Empathic Camouflage - Building Skills: Develop responses that show care while maintaining security protocols for emotional appeals.");
+            }
+            
+            if (scores.step5 >= 4) {
+                recommendations.push("👔 Deference Drift - Build Confident Stewardship: Reframe questioning as protection: 'Stewardship honors questions' - you're safeguarding the organization through verification.");
+            } else if (scores.step5 <= 2) {
+                recommendations.push("👔 Deference Drift - Strength Area: You're comfortable with appropriate questioning of leadership requests. This stewardship confidence is valuable.");
+            } else {
+                recommendations.push("👔 Deference Drift - Developing Confidence: Practice polite questioning techniques and verification procedures for senior leadership requests.");
+            }
+            
+            if (avgVulnerability >= 3.6) {
+                recommendations.push("🛡️ Next Steps: Focus on developing emotional awareness through practice scenarios and stewardship training. You're building valuable security skills.");
+            } else if (avgVulnerability <= 2.5) {
+                recommendations.push("🛡️ Leadership Opportunity: Your strong emotional security awareness makes you an ideal candidate for mentoring others in protective stewardship.");
+            } else {
+                recommendations.push("🛡️ Continued Growth: You have solid foundational skills. Focus on your specific development areas to strengthen your emotional security readiness.");
+            }
+            
+            return recommendations;
+        }
+
+        showStep(0);
+    </script>
+</body>
+</html>
