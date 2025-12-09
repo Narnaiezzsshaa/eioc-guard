@@ -1,6 +1,6 @@
 # Intellectual Property Documentation
 
-## EIOC Guard™ — Ownership and Prior Art Record
+## EIOC Guard™—Ownership and Prior Art Record
 
 This document establishes the intellectual property ownership, development timeline, and prior art for the EIOC Guard™ platform and associated Emotional Indicators of Compromise (EIOC)™ framework.
 
@@ -8,11 +8,11 @@ This document establishes the intellectual property ownership, development timel
 
 ## Ownership Declaration
 
-**Owner:** SoftArmorLabs  
-**Principal Creator:** [Your Full Legal Name]  
+**Owner:** Soft Armor Labs  
+**Principal Creator:** Narnaiezzsshaaa Truong  
 **Jurisdiction:** Texas, United States  
 **Initial Development Date:** December 2024  
-**First Public Disclosure:** August 2025  
+**First Public Disclosure:** October 2025  
 
 ---
 
@@ -38,20 +38,20 @@ This document establishes the intellectual property ownership, development timel
 - Created technical mappings connecting psychological states to attack patterns
 - Researched and integrated real-world case studies (Barbara Corcoran, Cabarrus County, Toyota Boshoku, Snapchat, Centrify)
 
-### Phase 3: Product Development (June 2025 - August 2025)
+### Phase 3: Product Development (June 2025 - September 2025)
 
 - Designed and developed interactive assessment tool
 - Created scoring algorithms and vulnerability profiling system
 - Built user interface with progress tracking and results visualization
 - Developed personalized recommendation engine
 
-### Phase 4: Public Disclosure (August 2025)
+### Phase 4: Public Disclosure (October 2025)
 
 - Published interface preview on LinkedIn (personal professional account)
 - Shared with professional network for initial feedback
 - Established public timestamp of invention disclosure
 
-### Phase 5: Continued Development (September 2025 - Present)
+### Phase 5: Continued Development (November 2025 - Present)
 
 - Refined assessment algorithms based on initial feedback
 - Enhanced mobile responsiveness
@@ -62,21 +62,21 @@ This document establishes the intellectual property ownership, development timel
 
 ## Prior Art Evidence
 
-### LinkedIn Publication (August 2025)
+### LinkedIn Publication (October 2025)
 
 - **Platform:** LinkedIn
-- **Account:** [Your LinkedIn Profile URL]
+- **Account:** https://www.linkedin.com/in/narnaiezzsshaa-truong
 - **Content:** Screenshot/preview of EIOC Guard interface
-- **Date:** August 2025
+- **Date:** October 9, 2025
 - **Status:** Publicly visible, timestamped by LinkedIn platform
 
-*[Screenshot of LinkedIn post should be archived and added to this repository]*
+*[linkedin-eioc-preview-2025-10-09.png]*
 
 ### Related Published Works
 
 The EIOC framework builds upon concepts explored in the creator's published cybersecurity education books:
 
-1. **"Digital Wisdom Stories"** — Amazon KDP
+1. **"Digital Wisdom Stories"** — Gumroad PDF
    - Explores accessible cybersecurity education concepts
    - Establishes author's expertise in translating technical concepts for general audiences
 
@@ -85,7 +85,9 @@ The EIOC framework builds upon concepts explored in the creator's published cybe
    - Prior art for care-based (vs. fear-based) security pedagogy
 
 3. **Additional Published Works** — Amazon KDP
-   - [List other relevant titles from your six published books]
+   - Home Is The First Line of Defense
+   - Modern Phishing
+   - Post-Breach Emotional Recovery Kit
    - Collectively establish author's expertise and ongoing development in cybersecurity education
 
 ### Related Framework Development
@@ -104,11 +106,11 @@ The following marks are claimed as trademarks of SoftArmorLabs:
 
 | Mark | First Use | Status |
 |------|-----------|--------|
-| EIOC Guard™ | June 2025 | Common Law |
+| EIOC Guard™ | October 2025 | Common Law |
 | Emotional Indicators of Compromise™ | December 2024 | Common Law |
 | Emotional Deterrence Primer™ | March 2025 | Common Law |
 | Stewardship Cues™ | March 2025 | Common Law |
-| SoftArmorLabs™ | 2024 | Common Law |
+| Soft Armor Labs™ | 2024 | Common Law |
 
 *Note: Common law trademark rights are established through use in commerce. Federal registration may be pursued as commercial deployment expands.*
 
@@ -151,8 +153,8 @@ Copyright protection attaches automatically upon creation. Formal registration w
 
 For verification of ownership, development timeline, or licensing inquiries:
 
-**SoftArmorLabs**
-- Email: legal@softarmorlabs.com
+**Soft Armor Labs**
+- Email: narnaiezzsshaa@gmail.com
 - Location: Texas, United States
 
 ---
@@ -167,4 +169,4 @@ For verification of ownership, development timeline, or licensing inquiries:
 
 *This document is part of the official intellectual property record for EIOC Guard™ and associated technologies. Unauthorized reproduction or distribution is prohibited.*
 
-© 2024-2025 SoftArmorLabs. All Rights Reserved.
+© 2024-2025 Soft Armor Labs. All Rights Reserved.
