@@ -1,6 +1,6 @@
 # EIOC Guard™
 
-**Emotional Indicators of Compromise — Security Awareness Training That Works With Human Psychology**
+**Emotional Indicators of Compromise—Security Awareness Training That Works With Human Psychology**
 
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](#license)
 [![Status: Active Development](https://img.shields.io/badge/Status-Active%20Development-green.svg)](#)
@@ -18,7 +18,7 @@ While traditional security training focuses on recognizing technical indicators 
 - 68% of cyber attacks involve human error (Verizon DBIR 2024)
 - Social engineering increased 442% in H2 2024
 - SMB employees face 350% more social engineering attempts than enterprise employees
-- Traditional awareness training has diminishing returns — employees "tune out"
+- Traditional awareness training has diminishing returns—employees "tune out"
 
 ### The EIOC Solution
 
@@ -26,10 +26,10 @@ Just as technical Indicators of Compromise (IOCs) signal system intrusion, **Emo
 
 EIOC Guard™ provides:
 
-1. **A Novel Classification System** — Five distinct emotional vulnerability categories with technical mappings
-2. **Stewardship Cues™** — Memorable defensive phrases that interrupt manipulation patterns
-3. **Self-Assessment Tools** — Personalized vulnerability profiling without shame-based metrics
-4. **Case-Study Integration** — Real-world breach examples tied to specific emotional exploits
+1. **A Novel Classification System** – Five distinct emotional vulnerability categories with technical mappings
+2. **Stewardship Cues™** – Memorable defensive phrases that interrupt manipulation patterns
+3. **Self-Assessment Tools** – Personalized vulnerability profiling without shame-based metrics
+4. **Case-Study Integration** – Real-world breach examples tied to specific emotional exploits
 
 ---
 
@@ -67,7 +67,7 @@ EIOC Guard™ provides:
 
 ## Intellectual Property Status
 
-This repository contains proprietary intellectual property of SoftArmorLabs.
+This repository contains proprietary intellectual property of Soft Armor Labs.
 
 **Protected Elements:**
 - EIOC Guard™ platform and methodology
@@ -79,7 +79,7 @@ This repository contains proprietary intellectual property of SoftArmorLabs.
 
 **Prior Art Established:**
 - Framework development initiated December 2024
-- Public disclosure via LinkedIn August 2025
+- Public disclosure via LinkedIn October 2025
 - Related concepts published in author's cybersecurity book series (Amazon KDP)
 
 See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual property documentation.
@@ -103,21 +103,21 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 
 ## Contact
 
-**SoftArmorLabs**
+**Soft Armor Labs**
 
-- **Licensing Inquiries:** legal@softarmorlabs.com
-- **Partnership Opportunities:** partnerships@softarmorlabs.com
-- **General Inquiries:** info@softarmorlabs.com
+- **Licensing Inquiries:** narnaiezzsshaa@gmail.com
+- **Partnership Opportunities:** narnaiezzsshaa@gmail.com
+- **General Inquiries:** narnaiezzsshaa@gmail.com
 
 ---
 
 ## License
 
-© 2024-2025 SoftArmorLabs. All Rights Reserved.
+© 2024-2025 Soft Armor Labs. All Rights Reserved.
 
 This software and associated documentation are proprietary and confidential. See [LICENSE](LICENSE) for terms.
 
-**No permission is granted to use, copy, modify, or distribute this software without explicit written authorization from SoftArmorLabs.**
+**No permission is granted to use, copy, modify, or distribute this software without explicit written authorization from Soft Armor Labs.**
 
 ---
 
