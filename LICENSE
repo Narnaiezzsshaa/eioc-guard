@@ -1,5 +1,5 @@
-PROPRIETARY SOFTWARE LICENSE
-============================
+PROPRIETARY SOFTWARE LICENSE WITH HUMANITARIAN USE PROVISIONS
+=============================================================
 
 Copyright (c) 2024-2025 Soft Armor Labs. All Rights Reserved.
 
@@ -9,27 +9,59 @@ property of Soft Armor Labs and are protected by copyright, trademark,
 trade secret, and other intellectual property laws.
 
 -------------------------------------------------------------------------------
-GRANT OF RIGHTS
+GRANT OF RIGHTS—HUMANITARIAN USE PROVISION
 -------------------------------------------------------------------------------
 
-NO LICENSE IS GRANTED. This Software is made available for evaluation 
-and review purposes only. By accessing this repository, you acknowledge 
-that:
+Soft Armor Labs believes that protective frameworks should reach those who 
+need them most. Accordingly, the following uses are PERMITTED without prior 
+written authorization:
 
-1. You have received no license, express or implied, to use, copy, modify,
-   distribute, or create derivative works from this Software.
+INDIVIDUAL USE:
+- Personal, non-commercial self-assessment and education
+- Use by individuals seeking to protect themselves or family members
+- Use by caregivers assisting vulnerable persons
 
-2. Viewing this repository does not transfer any intellectual property 
-   rights to you.
+NONPROFIT ORGANIZATIONS:
+- Domestic violence shelters and advocacy organizations
+- Elder care and adult protective services
+- Child welfare organizations
+- Mental health and crisis intervention services
+- Victim advocacy and support groups
+- Community safety organizations
+- Religious and faith-based support services
 
-3. Any use beyond personal evaluation requires explicit written 
-   authorization from Soft Armor Labs.
+PUBLIC INSTITUTIONS:
+- Public libraries offering patron services
+- Public schools and educational institutions (K-12)
+- Community colleges and universities (non-commercial research)
+- Government social services agencies
+
+CONDITIONS FOR PERMITTED USE:
+1. Use must be strictly non-commercial
+2. Attribution to Soft Armor Labs must be maintained
+3. The Software may not be modified or redistributed
+4. No proprietary notices may be removed or altered
+5. Use must align with the protective intent of the framework
+
+This humanitarian provision may not be revoked for any entity using the 
+Software in good faith under these terms as of their date of first use.
 
 -------------------------------------------------------------------------------
-RESTRICTIONS
+COMMERCIAL USE—LICENSE REQUIRED
 -------------------------------------------------------------------------------
 
-Without prior written permission from Soft Armor Labs, you MAY NOT:
+ALL COMMERCIAL USE REQUIRES EXPLICIT WRITTEN AUTHORIZATION.
+
+Commercial use includes, but is not limited to:
+- Integration into products or services offered for sale
+- Use by for-profit corporations, consultancies, or enterprises
+- Inclusion in paid training programs or certifications
+- Use by cybersecurity firms, MSSPs, or security consultancies
+- White-label or OEM implementations
+- Revenue-generating applications of any kind
+
+Without prior written permission from Soft Armor Labs, commercial entities 
+MAY NOT:
 
 - Use this Software for any commercial purpose
 - Copy, reproduce, or duplicate any portion of this Software
@@ -69,29 +101,33 @@ COPYRIGHT:
 - Assessment questions and response frameworks
 
 -------------------------------------------------------------------------------
-EVALUATION TERMS
+EVALUATION TERMS FOR COMMERCIAL ENTITIES
 -------------------------------------------------------------------------------
 
-If you are evaluating this Software for potential licensing, partnership,
-or acquisition purposes, you agree to:
+If you are a commercial entity evaluating this Software for potential 
+licensing, partnership, or acquisition purposes, you agree to:
 
 1. Maintain strict confidentiality of all proprietary information
 2. Not disclose any details to third parties without written consent
 3. Destroy or return all copies upon request
 4. Provide written notice of your evaluation within 30 days of access
+5. Not incorporate any concepts into your own products during evaluation
 
 -------------------------------------------------------------------------------
 ENFORCEMENT
 -------------------------------------------------------------------------------
 
 Soft Armor Labs reserves all rights to enforce this license through legal
-action. Unauthorized use may result in:
+action. Unauthorized commercial use may result in:
 
 - Injunctive relief and restraining orders
 - Recovery of actual damages and lost profits
 - Statutory damages for copyright infringement
 - Recovery of attorney's fees and legal costs
 - Criminal prosecution where applicable
+
+Soft Armor Labs will not pursue enforcement against good-faith humanitarian 
+use under the permitted use provisions above.
 
 -------------------------------------------------------------------------------
 LICENSING OPPORTUNITIES
@@ -117,4 +153,20 @@ of law principles.
 BY ACCESSING THIS REPOSITORY, YOU ACKNOWLEDGE THAT YOU HAVE READ,
 UNDERSTOOD, AND AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE.
 
-© 2024-2025 SoftArmorLabs. All Rights Reserved Worldwide.
+© 2024-2025 Soft Armor Labs. All Rights Reserved Worldwide.
+
+-------------------------------------------------------------------------------
+ETHOS
+-------------------------------------------------------------------------------
+
+"Design systems that protect dignity, restore signal, and quietly encode legacy."
+
+This framework exists because vulnerable people deserve protection that 
+doesn't require enterprise budgets. The humanitarian provisions above are 
+not an afterthought—they are the point.
+
+Commercial entities seeking to profit from this work are welcome to 
+negotiate fair terms. Those seeking to extract without compensation 
+should look elsewhere.
+
+— Soft Armor Labs
