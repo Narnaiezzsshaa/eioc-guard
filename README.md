@@ -105,7 +105,7 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 ├── PRODUCT-SPEC.md                # Scenario generation engine specification (technology layer)
 ├── eioc-guard-public.html         # Interactive assessment tool (proprietary)
 └── linkedin-eioc-post-2025-10-09.png  # Public disclosure proof
-
+```
 ```
 
 ---
