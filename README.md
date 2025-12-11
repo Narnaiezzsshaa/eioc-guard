@@ -88,9 +88,7 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 
 ## Repository Contents
 ```
-## Repository Contents
 
-```
 ├── README.md                      # This file
 ├── LICENSE                        # Proprietary license with humanitarian use provisions
 ├── IP-DOCUMENTATION.md            # Intellectual property timeline and proof
@@ -105,7 +103,7 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 ├── PRODUCT-SPEC.md                # Scenario generation engine specification (technology layer)
 ├── eioc-guard-public.html         # Interactive assessment tool (proprietary)
 └── linkedin-eioc-post-2025-10-09.png  # Public disclosure proof
-```
+
 ```
 
 ---
