@@ -88,12 +88,24 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 
 ## Repository Contents
 ```
-├── README.md                         # This file
-├── LICENSE                           # Proprietary license terms
-├── IP-DOCUMENTATION.md               # Intellectual property timeline and proof
-├── ACQUISITION-SUMMARY.md            # Executive overview for potential acquirers
-├── eioc-guard-public.html            # Assessment tool (proprietary)
-└── linkedin-eioc-post-2025-10-09.png # Public disclosure proof
+## Repository Contents
+
+```
+├── README.md                      # This file
+├── LICENSE                        # Proprietary license with humanitarian use provisions
+├── IP-DOCUMENTATION.md            # Intellectual property timeline and proof
+├── ACQUISITION-SUMMARY.md         # Executive overview for potential acquirers
+├── ROADMAP.md                     # Product vision, 6-layer architecture, development status
+├── COMPARISON.md                  # Generic vs. EIOC scenarios at a glance
+├── SCENARIO-PLAYBOOK.md           # Full emotionally-layered scenario library
+├── SCENARIO-BANK.md               # 88 rotating variants across 22 roles (anti-memorization)
+├── FACILITATOR-GUIDE.md           # Training delivery principles and methods
+├── TRAINING-SCRIPTS.md            # Modular workshop scripts by industry
+├── TRAINING-METHODOLOGY.md        # Advanced features: metrics, adaptive difficulty, cultural variants
+├── PRODUCT-SPEC.md                # Scenario generation engine specification (technology layer)
+├── eioc-guard-public.html         # Interactive assessment tool (proprietary)
+└── linkedin-eioc-post-2025-10-09.png  # Public disclosure proof
+
 ```
 
 ---
@@ -102,9 +114,7 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 
 **Soft Armor Labs**
 
-- **Licensing Inquiries:** narnaiezzsshaa@gmail.com
-- **Partnership Opportunities:** narnaiezzsshaa@gmail.com
-- **General Inquiries:** narnaiezzsshaa@gmail.com
+- **Licensing inquiries, partnership opportunities, and general inquiries:** narnaiezzsshaa@gmail.com
 
 ---
 
