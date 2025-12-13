@@ -1,6 +1,6 @@
 # EIOC™ Taxonomy
 
-**One Acronym. Twenty-One Frameworks. One Year of Development.**
+**One Acronym. Twenty-Two Frameworks. One Year of Development.**
 
 EIOC began as *Emotional Indicators of Compromise*—a framework for detecting social engineering through emotional triggers. It has since evolved into a comprehensive taxonomy spanning cybersecurity, human behavior, education, creative practice, and systems thinking.
 
@@ -16,6 +16,7 @@ Same four letters. Different masks for different contexts.
 | Email, Identity, Online Communication | Family/kids' framework for digital safety basics |
 | Enterprise Indicators of Compromise | SMB/enterprise variant for organizational awareness |
 | External Intrusion & Organizational Compromise | Breach detection across boundaries and departments |
+
 
 ---
 
@@ -60,6 +61,14 @@ Same four letters. Different masks for different contexts.
 | Edge Indicators of Compromise | Browser security variant |
 | Encrypted Information, Operational Controls | Cryptography and compliance frameworks |
 | Evaluation, Integration, Optimization, Calibration | Software/process improvement frameworks |
+
+---
+
+## Hybrid (Creative + Technical)
+
+| Expansion | Use Case |
+|-----------|----------|
+| Ethical Innovation & Oversight in Communication | Linguistic creativity under constraint; manipulation detection in AI-mediated environments |
 
 ---
 
