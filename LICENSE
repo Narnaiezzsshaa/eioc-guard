@@ -36,12 +36,53 @@ PUBLIC INSTITUTIONS:
 - Community colleges and universities (non-commercial research)
 - Government social services agencies
 
-CONDITIONS FOR PERMITTED USE:
+-------------------------------------------------------------------------------
+PERMITTED MODIFICATIONS (HUMANITARIAN USE ONLY)
+-------------------------------------------------------------------------------
+
+Permitted users (individuals, nonprofits, and public institutions as defined 
+above) MAY:
+
+- Adapt scenarios to specific populations, contexts, or regional threats
+- Translate materials into other languages
+- Add organization-specific training materials and scenarios
+- Integrate into non-commercial curricula and training programs
+- Create derivative works for internal non-commercial use
+- Share modified versions with other permitted users
+
+ATTRIBUTION REQUIREMENT FOR MODIFIED WORKS:
+
+All modified versions must prominently display:
+
+    "Based on EIOC Guard™ by Soft Armor Labs (softarmorlabs.com)
+     Used under humanitarian license."
+
+SHARE-ALIKE WITHIN HUMANITARIAN COMMUNITY:
+
+Modified versions may be freely shared among permitted users (individuals, 
+nonprofits, and public institutions as defined above), provided that:
+
+1. The modified work remains strictly non-commercial
+2. Attribution to Soft Armor Labs is maintained
+3. Recipients are informed of these license terms
+4. No proprietary notices are removed or altered
+5. Use aligns with the protective intent of the framework
+
+Modified versions MAY NOT be:
+- Sold or offered for commercial gain
+- Licensed to commercial entities
+- Incorporated into commercial products or services
+- Used to train commercial machine learning models
+
+-------------------------------------------------------------------------------
+CONDITIONS FOR ALL HUMANITARIAN USE
+-------------------------------------------------------------------------------
+
 1. Use must be strictly non-commercial
-2. Attribution to Soft Armor Labs must be maintained
-3. The Software may not be modified or redistributed
-4. No proprietary notices may be removed or altered
-5. Use must align with the protective intent of the framework
+2. Attribution to Soft Armor Labs and EIOC Guard™ must be maintained
+3. No proprietary notices may be removed or altered
+4. Use must align with the protective intent of the framework
+5. This license does not grant trademark rights beyond attribution
 
 This humanitarian provision may not be revoked for any entity using the 
 Software in good faith under these terms as of their date of first use.
@@ -73,6 +114,36 @@ MAY NOT:
 - Incorporate any concepts, methodologies, or frameworks into other products
 - Train machine learning models on any portion of this Software
 - Claim ownership or authorship of any portion of this Software
+
+-------------------------------------------------------------------------------
+PUBLIC REPOSITORY & COMMERCIAL SUBSCRIPTION MODEL
+-------------------------------------------------------------------------------
+
+PUBLIC FOUNDATION LAYER:
+
+This public repository represents the foundational EIOC Guard™ framework. 
+It is made available to:
+
+- Demonstrate methodology and quality
+- Serve humanitarian users who genuinely need protection
+- Enable evaluation by potential commercial licensees
+- Support community awareness of social engineering threats
+
+COMMERCIAL SUBSCRIPTION VALUE:
+
+The public repository contains static foundational content. Commercial value 
+lies in ongoing scenario freshness and threat-aligned updates, which are 
+available exclusively through commercial licensing:
+
+- Quarterly scenario updates reflecting current attack patterns
+- New emotional lever combinations and industry-specific variants
+- Threat-aligned updates (e.g., AI voice cloning, deepfake scenarios)
+- Seasonal variations (tax season, open enrollment, holiday logistics)
+- Custom scenarios tailored to organizational culture and systems
+
+Static use of public repository content for commercial purposes still 
+requires licensing. The subscription model provides the continuous updates 
+that maintain training effectiveness and prevent scenario gaming.
 
 -------------------------------------------------------------------------------
 PROTECTED INTELLECTUAL PROPERTY
@@ -133,9 +204,27 @@ use under the permitted use provisions above.
 LICENSING OPPORTUNITIES
 -------------------------------------------------------------------------------
 
-Commercial licenses, enterprise implementations, white-label solutions,
-and acquisition discussions are available. Contact:
+Commercial licenses are available at multiple tiers:
 
+FOUNDATION LICENSE (One-Time):
+- Current scenario bank as-is
+- No updates included
+
+SUBSCRIPTION LICENSE (Annual):
+- Quarterly scenario refreshes
+- New industry variants
+- Threat-aligned updates
+
+ENTERPRISE LICENSE (Custom):
+- All subscription benefits
+- Custom scenarios for your organization
+- Integration support
+- Training facilitation
+
+WHITE-LABEL / OEM:
+- Contact for partnership terms
+
+Contact:
 - Licensing: narnaiezzsshaa@gmail.com
 - Partnerships: narnaiezzsshaa@gmail.com
 - Acquisitions: narnaiezzsshaa@gmail.com
@@ -165,8 +254,9 @@ This framework exists because vulnerable people deserve protection that
 doesn't require enterprise budgets. The humanitarian provisions above are 
 not an afterthought—they are the point.
 
-Commercial entities seeking to profit from this work are welcome to 
-negotiate fair terms. Those seeking to extract without compensation 
-should look elsewhere.
+The public repository is a gift to those who need it and a demonstration 
+to those who would license it. Commercial entities seeking to profit from 
+this work are welcome to negotiate fair terms. Those seeking to extract 
+without compensation should look elsewhere.
 
 — Soft Armor Labs
