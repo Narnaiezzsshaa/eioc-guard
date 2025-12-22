@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIOC Guard v1.5 | Emotional Deterrence Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border-subtle: #30363d;
+            --border-accent: #3b82f6;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --accent-blue: #58a6ff;
+            --accent-teal: #2dd4bf;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f472b6;
+            --accent-violet: #a78bfa;
+            --success: #3fb950;
+            --warning: #d29922;
+            --danger: #f85149;
+            --gradient-shield: linear-gradient(135deg, #1e3a5f 0%, #0d1117 50%, #1a1f2e 100%);
+            --shadow-glow: 0 0 40px rgba(88, 166, 255, 0.1);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Ambient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(45, 212, 191, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(88, 166, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(167, 139, 250, 0.02) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(45, 212, 191, 0.2);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .version-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        header h1 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .reset-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-body);
+        }
+
+        .reset-btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Section */
+        .welcome-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .welcome-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .epigraph {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--accent-teal);
+            padding: 1.5rem;
+            background: rgba(45, 212, 191, 0.05);
+            border-left: 3px solid var(--accent-teal);
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .feature-item:nth-child(1) .feature-icon { background: rgba(88, 166, 255, 0.15); }
+        .feature-item:nth-child(2) .feature-icon { background: rgba(45, 212, 191, 0.15); }
+        .feature-item:nth-child(3) .feature-icon { background: rgba(167, 139, 250, 0.15); }
+        .feature-item:nth-child(4) .feature-icon { background: rgba(245, 158, 11, 0.15); }
+
+        .feature-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .update-notice {
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.1), rgba(88, 166, 255, 0.1));
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .update-notice h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .update-notice p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Scenario Cards */
+        .scenario-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .scenario-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .scenario-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .scenario-1 .scenario-icon { background: linear-gradient(135deg, rgba(88, 166, 255, 0.2), rgba(88, 166, 255, 0.05)); }
+        .scenario-2 .scenario-icon { background: linear-gradient(135deg, rgba(45, 212, 191, 0.2), rgba(45, 212, 191, 0.05)); }
+        .scenario-3 .scenario-icon { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05)); }
+        .scenario-4 .scenario-icon { background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(244, 114, 182, 0.05)); }
+        .scenario-5 .scenario-icon { background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(167, 139, 250, 0.05)); }
+        .scenario-6 .scenario-icon { background: linear-gradient(135deg, rgba(248, 81, 73, 0.2), rgba(248, 81, 73, 0.05)); }
+
+        .scenario-title h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .scenario-title .mapping {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .scenario-body {
+            padding: 2rem;
+        }
+
+        .stewardship-cue {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: rgba(45, 212, 191, 0.08);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stewardship-cue .icon {
+            font-size: 1.25rem;
+        }
+
+        .stewardship-cue .text {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--accent-teal);
+        }
+
+        .real-impact {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .real-impact-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-amber);
+            margin-bottom: 0.5rem;
+        }
+
+        .real-impact p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .threat-update {
+            background: linear-gradient(135deg, rgba(248, 81, 73, 0.1), rgba(245, 158, 11, 0.1));
+            border: 1px solid rgba(248, 81, 73, 0.2);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .threat-update-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .threat-update p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .scenario-text {
+            background: var(--bg-deep);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .scenario-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .scenario-text p {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .modern-cues {
+            margin-bottom: 1.5rem;
+        }
+
+        .modern-cues-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .cue-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .cue-tag {
+            padding: 0.35rem 0.75rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Questions */
+        .question-block {
+            margin-bottom: 1.5rem;
+        }
+
+        .question-block h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            border-color: var(--accent-blue);
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .option.selected {
+            border-color: var(--accent-teal);
+            background: rgba(45, 212, 191, 0.1);
+        }
+
+        .option input {
+            display: none;
+        }
+
+        .option-radio {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-subtle);
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .option.selected .option-radio {
+            border-color: var(--accent-teal);
+        }
+
+        .option.selected .option-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-teal);
+            border-radius: 50%;
+        }
+
+        .option-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .option.selected .option-text {
+            color: var(--text-primary);
+        }
+
+        /* EIOC Prompts */
+        .eioc-prompts {
+            background: rgba(167, 139, 250, 0.08);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .eioc-prompts-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-violet);
+            margin-bottom: 0.75rem;
+        }
+
+        .eioc-prompts ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .eioc-prompts li {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .eioc-prompts li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            color: var(--accent-violet);
+            font-weight: 600;
+        }
+
+        /* Scale Question */
+        .scale-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .scale-option {
+            flex: 1;
+            min-width: 80px;
+            padding: 0.75rem 0.5rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .scale-option:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .scale-option.selected {
+            border-color: var(--accent-teal);
+            background: rgba(45, 212, 191, 0.1);
+            color: var(--text-primary);
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-body);
+            border: none;
+        }
+
+        .btn-secondary {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+            color: var(--bg-deep);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(45, 212, 191, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Results Section */
+        .results-header {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .score-display {
+            margin: 1.5rem 0;
+        }
+
+        .score-value {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .score-interpretation {
+            padding: 1.5rem;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .score-interpretation h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .score-interpretation p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .focus-areas {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .focus-areas h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .focus-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .focus-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .focus-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .focus-content h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .focus-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Share Section */
+        .share-section {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .share-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .share-section p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .licensing-cta {
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.1), rgba(88, 166, 255, 0.1));
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 2rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        .footer-legal {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .footer-trademarks {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+
+        /* Progress Indicator */
+        .progress-bar {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-subtle);
+            transition: all 0.3s;
+        }
+
+        .progress-dot.active {
+            background: var(--accent-teal);
+            box-shadow: 0 0 8px rgba(45, 212, 191, 0.5);
+        }
+
+        .progress-dot.completed {
+            background: var(--accent-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scale-options {
+                flex-direction: column;
+            }
+
+            .scale-option {
+                min-width: 100%;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="reset-btn" onclick="resetAssessment()">↻ Start Over</button>
+        
+        <header>
+            <div class="logo">
+                <div class="logo-icon">🛡️</div>
+                <span class="logo-text">EIOC Guard</span>
+            </div>
+            <div class="version-badge">v1.5 — Updated December 2025</div>
+            <h1>Emotional Deterrence Assessment</h1>
+        </header>
+
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-dot active" data-step="0"></div>
+            <div class="progress-dot" data-step="1"></div>
+            <div class="progress-dot" data-step="2"></div>
+            <div class="progress-dot" data-step="3"></div>
+            <div class="progress-dot" data-step="4"></div>
+            <div class="progress-dot" data-step="5"></div>
+            <div class="progress-dot" data-step="6"></div>
+            <div class="progress-dot" data-step="7"></div>
+        </div>
+
+        <!-- Welcome Section -->
+        <section class="section active" id="section-welcome">
+            <div class="update-notice">
+                <h3>🔄 v1.5 Threat Update</h3>
+                <p>This version includes scenarios addressing AI voice cloning, deepfake impersonation, seasonal attack patterns, and platform-specific vectors emerging in 2025.</p>
+            </div>
+
+            <div class="welcome-content">
+                <h2>Welcome to Your Emotional Security Assessment</h2>
+                <p>Social engineers succeed not by exploiting technical vulnerabilities, but by manipulating our natural human emotions and instincts.</p>
+                <p>This assessment will help you recognize <strong>Emotional Indicators of Compromise (EIOCs)</strong>—the psychological states that attackers create to bypass your rational defenses.</p>
+                
+                <div class="epigraph">
+                    "Power wears many masks. Urgency is not trust. Pause, then protect."
+                </div>
+
+                <p>You'll learn about six critical emotional vulnerabilities and develop practical stewardship skills to protect yourself and your organization.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🎭</div>
+                        <div class="feature-text">6 interactive scenarios testing different emotional vulnerabilities</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-text">Self-assessment of your responses to manipulation tactics</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-text">Personalized recommendations based on your profile</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💡</div>
+                        <div class="feature-text">Educational insights, not clinical diagnosis</div>
+                    </div>
+                </div>
+
+                <div class="meta-info">
+                    <span>⏱️ Time: 8-12 minutes</span>
+                    <span>🎯 Goal: Build self-awareness and emotional resilience</span>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <div></div>
+                <button class="btn btn-primary" onclick="nextSection()">Begin Assessment →</button>
+            </div>
+        </section>
+
+        <!-- Scenario 1: AI Voice Cloning - Familiarity Shortcut -->
+        <section class="section" id="section-1">
+            <div class="scenario-card scenario-1">
+                <div class="scenario-header">
+                    <div class="scenario-icon">🎭</div>
+                    <div class="scenario-title">
+                        <h3>Synthetic Familiarity</h3>
+                        <span class="mapping">Technical Mapping: AI-Enhanced Trust Injection</span>
+                    </div>
+                </div>
+                <div class="scenario-body">
+                    <div class="stewardship-cue">
+                        <span class="icon">🛡️</span>
+                        <span class="text">"Pause before you mirror."</span>
+                    </div>
+
+                    <div class="threat-update">
+                        <div class="threat-update-label">⚡ 2025 Threat Vector</div>
+                        <p>AI voice cloning now replicates tone, cadence, and verbal habits with seconds of sample audio. Attackers target the colleague who is usually unflappable—hyper-competence, not exhaustion.</p>
+                    </div>
+
+                    <div class="scenario-text">
+                        <div class="scenario-label">📞 Scenario: The Perfectly Calm Colleague</div>
+                        <p>You receive a voice call from "Maya," your famously composed project manager. Her voice is flawless—tone, cadence, even her dry humor. She says:</p>
+                        <p><em>"I'm in a client meeting and can't access the shared drive. Can you send me the updated contract PDF? Just email it to this address—it's the client's secure portal."</em></p>
+                    </div>
+
+                    <div class="modern-cues">
+                        <div class="modern-cues-label">Detection Cues</div>
+                        <div class="cue-list">
+                            <span class="cue-tag">No background noise (AI-cleaned audio)</span>
+                            <span class="cue-tag">Perfectly even tone (no stress markers)</span>
+                            <span class="cue-tag">Slightly outdated jargon</span>
+                            <span class="cue-tag">New email/portal requested</span>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>What's the strongest red flag in this scenario?</h4>
+                        <div class="options" data-question="q1a">
+                            <label class="option">
+                                <input type="radio" name="q1a" value="1">
+                                <span class="option-radio"></span>
+                                <span class="option-text">She called during a client meeting</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">The voice sounded exactly like her</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1a" value="4">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Request to use a new/unfamiliar email address</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">She mentioned the shared drive</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>How often do you verify identity when someone demonstrates familiarity with you or your work?</h4>
+                        <div class="scale-options" data-question="q1b">
+                            <div class="scale-option" data-value="5">Always</div>
+                            <div class="scale-option" data-value="4">Usually</div>
+                            <div class="scale-option" data-value="3">Sometimes</div>
+                            <div class="scale-option" data-value="2">Rarely</div>
+                            <div class="scale-option" data-value="1">Never</div>
+                        </div>
+                    </div>
+
+                    <div class="eioc-prompts">
+                        <div class="eioc-prompts-label">EIOC Recognition Prompts</div>
+                        <ul>
+                            <li>Does the emotional tone match the situation?</li>
+                            <li>Is the request routed through a new channel?</li>
+                            <li>Would this colleague ever ask me to bypass our normal workflow?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevSection()">← Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()" id="next1" disabled>Continue →</button>
+            </div>
+        </section>
+
+        <!-- Scenario 2: Performance Reflex - Tax Season Scam -->
+        <section class="section" id="section-2">
+            <div class="scenario-card scenario-2">
+                <div class="scenario-header">
+                    <div class="scenario-icon">⚡</div>
+                    <div class="scenario-title">
+                        <h3>Performance Reflex</h3>
+                        <span class="mapping">Technical Mapping: Urgency Trigger Exploit</span>
+                    </div>
+                </div>
+                <div class="scenario-body">
+                    <div class="stewardship-cue">
+                        <span class="icon">🛡️</span>
+                        <span class="text">"Urgency is not a credential."</span>
+                    </div>
+
+                    <div class="threat-update">
+                        <div class="threat-update-label">📅 Seasonal Attack Pattern</div>
+                        <p>Tax season scams exploit guilt, urgency, and fear of penalties. Modern variants use correct employer branding scraped from LinkedIn and AI-generated "proof" documents.</p>
+                    </div>
+
+                    <div class="scenario-text">
+                        <div class="scenario-label">📧 Scenario: The Refund Reversal</div>
+                        <p>During tax season, you receive an email from "Payroll Support" saying:</p>
+                        <p><em>"We accidentally over-refunded your tax adjustment. Please return the excess amount today to avoid IRS penalties."</em></p>
+                        <p>The email includes a professional PDF with your name, employee ID, and what appears to be your W-2 information.</p>
+                    </div>
+
+                    <div class="modern-cues">
+                        <div class="modern-cues-label">Detection Cues</div>
+                        <div class="cue-list">
+                            <span class="cue-tag">Correct employer branding</span>
+                            <span class="cue-tag">Real tax deadlines referenced</span>
+                            <span class="cue-tag">AI-generated PDF "proof"</span>
+                            <span class="cue-tag">Polite, not threatening tone</span>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>What makes this scenario particularly dangerous?</h4>
+                        <div class="options" data-question="q2a">
+                            <label class="option">
+                                <input type="radio" name="q2a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">It mentions real tax deadlines</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2a" value="4">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Combines guilt (you owe them) with fear (IRS penalties)</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">The email looks professional</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2a" value="1">
+                                <span class="option-radio"></span>
+                                <span class="option-text">It came from "Payroll Support"</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>How does time pressure affect your decision-making?</h4>
+                        <div class="scale-options" data-question="q2b">
+                            <div class="scale-option" data-value="5">Makes me more careful</div>
+                            <div class="scale-option" data-value="4">Doesn't affect me</div>
+                            <div class="scale-option" data-value="3">Sometimes I rush</div>
+                            <div class="scale-option" data-value="2">Often makes me hasty</div>
+                            <div class="scale-option" data-value="1">I always rush</div>
+                        </div>
+                    </div>
+
+                    <div class="eioc-prompts">
+                        <div class="eioc-prompts-label">EIOC Recognition Prompts</div>
+                        <ul>
+                            <li>Is this a new or unusual financial workflow?</li>
+                            <li>Is the emotional pressure disproportionate to the request?</li>
+                            <li>Does the sender route me outside official payroll systems?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevSection()">← Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()" id="next2" disabled>Continue →</button>
+            </div>
+        </section>
+
+        <!-- Scenario 3: Empathic Camouflage - Healthcare Coverage -->
+        <section class="section" id="section-3">
+            <div class="scenario-card scenario-3">
+                <div class="scenario-header">
+                    <div class="scenario-icon">💝</div>
+                    <div class="scenario-title">
+                        <h3>Empathic Camouflage</h3>
+                        <span class="mapping">Technical Mapping: Affinity Bias Pretexting</span>
+                    </div>
+                </div>
+                <div class="scenario-body">
+                    <div class="stewardship-cue">
+                        <span class="icon">🛡️</span>
+                        <span class="text">"Familiar warmth may conceal cold intent."</span>
+                    </div>
+
+                    <div class="threat-update">
+                        <div class="threat-update-label">📅 Open Enrollment Season</div>
+                        <p>Healthcare coverage scams exploit fear of losing protection and responsibility for dependents. Modern variants use cloned benefits portals and reference real enrollment deadlines.</p>
+                    </div>
+
+                    <div class="scenario-text">
+                        <div class="scenario-label">📱 Scenario: The Coverage Gap</div>
+                        <p>During open enrollment, you receive a text message:</p>
+                        <p><em>"URGENT: Your dependent coverage is incomplete. Submit your SSN and dependent info to finalize enrollment before the deadline. Failure to complete may result in coverage gaps for your family."</em></p>
+                        <p>The link leads to a benefits portal that looks almost identical to your company's.</p>
+                    </div>
+
+                    <div class="modern-cues">
+                        <div class="modern-cues-label">Detection Cues</div>
+                        <div class="cue-list">
+                            <span class="cue-tag">AI-generated logos (almost right)</span>
+                            <span class="cue-tag">Cloned benefits portal</span>
+                            <span class="cue-tag">Real enrollment dates</span>
+                            <span class="cue-tag">"Helpful" not alarming tone</span>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>What's the appropriate response to this message?</h4>
+                        <div class="options" data-question="q3a">
+                            <label class="option">
+                                <input type="radio" name="q3a" value="1">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Click the link immediately—my family's coverage is at stake</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Reply to ask for more information</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3a" value="4">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Ignore the text and log into benefits portal directly through known URL</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3a" value="3">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Forward to HR to check if it's legitimate</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>How difficult is it for you to pause when family security is invoked?</h4>
+                        <div class="scale-options" data-question="q3b">
+                            <div class="scale-option" data-value="5">Very Easy</div>
+                            <div class="scale-option" data-value="4">Easy</div>
+                            <div class="scale-option" data-value="3">Moderate</div>
+                            <div class="scale-option" data-value="2">Difficult</div>
+                            <div class="scale-option" data-value="1">Very Difficult</div>
+                        </div>
+                    </div>
+
+                    <div class="eioc-prompts">
+                        <div class="eioc-prompts-label">EIOC Recognition Prompts</div>
+                        <ul>
+                            <li>Is this channel normally used for benefits communication?</li>
+                            <li>Is the request asking for information HR already has?</li>
+                            <li>Does the emotional tone push me toward immediate action?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevSection()">← Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()" id="next3" disabled>Continue →</button>
+            </div>
+        </section>
+
+        <!-- Scenario 4: Deference Drift - AI Model Safety -->
+        <section class="section" id="section-4">
+            <div class="scenario-card scenario-4">
+                <div class="scenario-header">
+                    <div class="scenario-icon">👔</div>
+                    <div class="scenario-title">
+                        <h3>Deference Drift</h3>
+                        <span class="mapping">Technical Mapping: Authority Spoof Lever</span>
+                    </div>
+                </div>
+                <div class="scenario-body">
+                    <div class="stewardship-cue">
+                        <span class="icon">🛡️</span>
+                        <span class="text">"Stewardship honors questions."</span>
+                    </div>
+
+                    <div class="threat-update">
+                        <div class="threat-update-label">🏢 Industry-Specific Vector</div>
+                        <p>Tech industry attacks exploit professional responsibility and fear of being the bottleneck. Attackers use correct internal jargon and create artificial urgency around security reviews.</p>
+                    </div>
+
+                    <div class="scenario-text">
+                        <div class="scenario-label">💬 Scenario: The Safety Escalation</div>
+                        <p>You receive a Slack DM from someone appearing to be from "Security Engineering":</p>
+                        <p><em>"We detected anomalous model behavior. Need your API logs ASAP for the safety review. Upload here: [external link]. This is time-sensitive—the safety team is standing by."</em></p>
+                        <p>The message uses your team's exact terminology and references a real project name.</p>
+                    </div>
+
+                    <div class="modern-cues">
+                        <div class="modern-cues-label">Detection Cues</div>
+                        <div class="cue-list">
+                            <span class="cue-tag">Correct internal jargon</span>
+                            <span class="cue-tag">Authoritative but calm tone</span>
+                            <span class="cue-tag">External upload destination</span>
+                            <span class="cue-tag">Responsibility pressure</span>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>What's the most appropriate action?</h4>
+                        <div class="options" data-question="q4a">
+                            <label class="option">
+                                <input type="radio" name="q4a" value="1">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Upload immediately—security incidents are serious</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4a" value="4">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Verify through official incident response channels before taking action</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Ask them for more details about the anomaly</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4a" value="3">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Check with your manager first</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>How comfortable are you questioning instructions from security or leadership?</h4>
+                        <div class="scale-options" data-question="q4b">
+                            <div class="scale-option" data-value="5">Very Comfortable</div>
+                            <div class="scale-option" data-value="4">Comfortable</div>
+                            <div class="scale-option" data-value="3">Neutral</div>
+                            <div class="scale-option" data-value="2">Uncomfortable</div>
+                            <div class="scale-option" data-value="1">Very Uncomfortable</div>
+                        </div>
+                    </div>
+
+                    <div class="eioc-prompts">
+                        <div class="eioc-prompts-label">EIOC Recognition Prompts</div>
+                        <ul>
+                            <li>Is the request consistent with our incident response workflow?</li>
+                            <li>Is the emotional tone designed to make me feel responsible?</li>
+                            <li>Is the upload destination legitimate?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevSection()">← Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()" id="next4" disabled>Continue →</button>
+            </div>
+        </section>
+
+        <!-- Scenario 5: Prestige Mirage - Meeting Summary Malware -->
+        <section class="section" id="section-5">
+            <div class="scenario-card scenario-5">
+                <div class="scenario-header">
+                    <div class="scenario-icon">🎪</div>
+                    <div class="scenario-title">
+                        <h3>Prestige Mirage</h3>
+                        <span class="mapping">Technical Mapping: Status-Based Exploit</span>
+                    </div>
+                </div>
+                <div class="scenario-body">
+                    <div class="stewardship-cue">
+                        <span class="icon">🛡️</span>
+                        <span class="text">"Signal is earned, not borrowed."</span>
+                    </div>
+
+                    <div class="threat-update">
+                        <div class="threat-update-label">🤖 AI-Era Vector</div>
+                        <p>Attackers exploit curiosity and FOMO by leveraging AI-generated meeting summaries. File names mimic legitimate productivity tools, and the casual tone bypasses suspicion.</p>
+                    </div>
+
+                    <div class="scenario-text">
+                        <div class="scenario-label">💻 Scenario: The Helpful Summary</div>
+                        <p>You receive a Teams message from a colleague:</p>
+                        <p><em>"Here's the AI-generated summary of yesterday's leadership meeting. Let me know if anything looks off."</em></p>
+                        <p>Attachment: <code>MeetingSummary_AutoGen.docx</code></p>
+                        <p>The message uses correct internal terminology—but you realize this colleague wasn't in that meeting.</p>
+                    </div>
+
+                    <div class="modern-cues">
+                        <div class="modern-cues-label">Detection Cues</div>
+                        <div class="cue-list">
+                            <span class="cue-tag">File name mimics AI tools</span>
+                            <span class="cue-tag">Casual, familiar tone</span>
+                            <span class="cue-tag">Correct internal terminology</span>
+                            <span class="cue-tag">Sender mismatch to meeting</span>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>What's the strongest indicator this is suspicious?</h4>
+                        <div class="options" data-question="q5a">
+                            <label class="option">
+                                <input type="radio" name="q5a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">The file is a .docx attachment</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5a" value="4">
+                                <span class="option-radio"></span>
+                                <span class="option-text">The sender wasn't at the meeting they're summarizing</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">It mentions "AI-generated"</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5a" value="1">
+                                <span class="option-radio"></span>
+                                <span class="option-text">It came through Teams</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>How often do you verify file sources before opening attachments from colleagues?</h4>
+                        <div class="scale-options" data-question="q5b">
+                            <div class="scale-option" data-value="5">Always</div>
+                            <div class="scale-option" data-value="4">Usually</div>
+                            <div class="scale-option" data-value="3">Sometimes</div>
+                            <div class="scale-option" data-value="2">Rarely</div>
+                            <div class="scale-option" data-value="1">Never</div>
+                        </div>
+                    </div>
+
+                    <div class="eioc-prompts">
+                        <div class="eioc-prompts-label">EIOC Recognition Prompts</div>
+                        <ul>
+                            <li>Does the sender normally share files this way?</li>
+                            <li>Is the emotional hook (curiosity, FOMO) being exploited?</li>
+                            <li>Is the file type consistent with our internal tools?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevSection()">← Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()" id="next5" disabled>Continue →</button>
+            </div>
+        </section>
+
+        <!-- Scenario 6: Duty Exploitation - Parent Concern -->
+        <section class="section" id="section-6">
+            <div class="scenario-card scenario-6">
+                <div class="scenario-header">
+                    <div class="scenario-icon">📚</div>
+                    <div class="scenario-title">
+                        <h3>Duty Exploitation</h3>
+                        <span class="mapping">Technical Mapping: Professional Obligation Lever</span>
+                    </div>
+                </div>
+                <div class="scenario-body">
+                    <div class="stewardship-cue">
+                        <span class="icon">🛡️</span>
+                        <span class="text">"Care protects through process."</span>
+                    </div>
+
+                    <div class="threat-update">
+                        <div class="threat-update-label">🎓 Education Sector Vector</div>
+                        <p>AI-generated "parent voice" emails exploit teacher empathy and duty of care. Attackers scrape class events from newsletters to build context and bypass parent portal verification.</p>
+                    </div>
+
+                    <div class="scenario-text">
+                        <div class="scenario-label">📧 Scenario: The Worried Parent</div>
+                        <p>A teacher receives an email from a Gmail address:</p>
+                        <p><em>"I'm worried about my daughter Sarah's behavior lately, especially after that field trip last week. Can you send me her last two assignments and any notes you have? I want to understand what's going on before our conference."</em></p>
+                        <p>The email references a real class event and uses an emotionally intimate tone.</p>
+                    </div>
+
+                    <div class="modern-cues">
+                        <div class="modern-cues-label">Detection Cues</div>
+                        <div class="cue-list">
+                            <span class="cue-tag">AI-generated emotional nuance</span>
+                            <span class="cue-tag">Real class events referenced</span>
+                            <span class="cue-tag">Gmail instead of parent portal</span>
+                            <span class="cue-tag">Requests more than necessary</span>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>What's the appropriate response to this emotional appeal?</h4>
+                        <div class="options" data-question="q6a">
+                            <label class="option">
+                                <input type="radio" name="q6a" value="1">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Send the information—the parent is clearly concerned</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6a" value="4">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Express concern but verify identity through the official parent portal</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6a" value="2">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Ask for the parent's phone number to call them back</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6a" value="3">
+                                <span class="option-radio"></span>
+                                <span class="option-text">Ignore it—probably spam</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4>How difficult is it for you to maintain process when someone appeals to your professional duty?</h4>
+                        <div class="scale-options" data-question="q6b">
+                            <div class="scale-option" data-value="5">Very Easy</div>
+                            <div class="scale-option" data-value="4">Easy</div>
+                            <div class="scale-option" data-value="3">Moderate</div>
+                            <div class="scale-option" data-value="2">Difficult</div>
+                            <div class="scale-option" data-value="1">Very Difficult</div>
+                        </div>
+                    </div>
+
+                    <div class="eioc-prompts">
+                        <div class="eioc-prompts-label">EIOC Recognition Prompts</div>
+                        <ul>
+                            <li>Is the emotional tone unusually intimate for a first contact?</li>
+                            <li>Is the request bypassing official communication channels?</li>
+                            <li>Is the sender asking for more data than necessary?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevSection()">← Previous</button>
+                <button class="btn btn-primary" onclick="calculateResults()">View Results →</button>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="section" id="section-results">
+            <div class="results-header">
+                <h2>Your Emotional Security Assessment</h2>
+                <div class="score-display">
+                    <div class="score-value" id="scoreValue">--</div>
+                    <div class="score-label">Emotional Security Readiness</div>
+                </div>
+                <div class="epigraph">
+                    "Power wears many masks. Urgency is not trust. Pause, then protect."
+                </div>
+                <div class="score-interpretation" id="scoreInterpretation">
+                    <h4>Understanding Your Assessment</h4>
+                    <p>This assessment measures your awareness of emotional manipulation patterns that social engineers commonly exploit. Your readiness level reflects how well you recognize and respond to these tactics.</p>
+                </div>
+            </div>
+
+            <div class="focus-areas" id="focusAreas">
+                <h3>Your Personal Development Focus Areas</h3>
+                <div id="focusContent"></div>
+            </div>
+
+            <div class="share-section">
+                <h3>Share This Assessment</h3>
+                <p>Know someone who could benefit from understanding emotional manipulation tactics? Share this free resource with them.</p>
+                <div class="licensing-cta">
+                    <strong>For organizational training or curriculum licensing:</strong><br>
+                    Contact Soft Armor Labs at narnaiezzsshaa@gmail.com
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="resetAssessment()">Take Assessment Again</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-brand">🛡️ Soft Armor Labs</div>
+            <div class="footer-links">
+                <a href="mailto:narnaiezzsshaa@gmail.com">Contact</a>
+                <a href="mailto:narnaiezzsshaa@gmail.com">Licensing</a>
+                <a href="https://github.com/narnaiezzsshaa/eioc-guard">GitHub</a>
+            </div>
+            <div class="footer-legal">
+                © 2024-2025 Soft Armor Labs. All Rights Reserved.<br>
+                This assessment is provided free for personal and educational use.<br>
+                Commercial use, reproduction, or derivative works require written authorization.
+            </div>
+            <div class="footer-trademarks">
+                EIOC Guard™ • Emotional Indicators of Compromise™ • Stewardship Cues™ • Emotional Deterrence Primer™
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let currentSection = 0;
+        const totalSections = 7;
+        let answers = {};
+
+        // Initialize option handlers
+        document.querySelectorAll('.options').forEach(optionGroup => {
+            optionGroup.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionName = this.querySelector('input').name;
+                    optionGroup.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    this.querySelector('input').checked = true;
+                    answers[questionName] = parseInt(this.querySelector('input').value);
+                    checkSectionComplete();
+                });
+            });
+        });
+
+        document.querySelectorAll('.scale-options').forEach(scaleGroup => {
+            scaleGroup.querySelectorAll('.scale-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionKey = scaleGroup.dataset.question;
+                    scaleGroup.querySelectorAll('.scale-option').forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    answers[questionKey] = parseInt(this.dataset.value);
+                    checkSectionComplete();
+                });
+            });
+        });
+
+        function checkSectionComplete() {
+            if (currentSection === 0) return;
+            
+            const requiredA = `q${currentSection}a`;
+            const requiredB = `q${currentSection}b`;
+            const nextBtn = document.getElementById(`next${currentSection}`);
+            
+            if (nextBtn && answers[requiredA] && answers[requiredB]) {
+                nextBtn.disabled = false;
+            }
+        }
+
+        function updateProgress() {
+            document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+                dot.classList.remove('active', 'completed');
+                if (index < currentSection) {
+                    dot.classList.add('completed');
+                } else if (index === currentSection) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        function showSection(index) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            
+            if (index === totalSections) {
+                document.getElementById('section-results').classList.add('active');
+            } else if (index === 0) {
+                document.getElementById('section-welcome').classList.add('active');
+            } else {
+                document.getElementById(`section-${index}`).classList.add('active');
+            }
+            
+            currentSection = index;
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextSection() {
+            if (currentSection < totalSections) {
+                showSection(currentSection + 1);
+            }
+        }
+
+        function prevSection() {
+            if (currentSection > 0) {
+                showSection(currentSection - 1);
+            }
+        }
+
+        function calculateResults() {
+            let totalScore = 0;
+            let maxScore = 0;
+            
+            Object.keys(answers).forEach(key => {
+                totalScore += answers[key];
+                maxScore += (key.endsWith('a') ? 4 : 5);
+            });
+            
+            const percentage = Math.round((totalScore / maxScore) * 100);
+            document.getElementById('scoreValue').textContent = percentage + '%';
+            
+            let interpretation = '';
+            let focusHTML = '';
+            
+            if (percentage >= 80) {
+                interpretation = '<h4>High Readiness</h4><p>You demonstrate strong awareness of emotional manipulation tactics. Continue refining your skills and consider helping others in your organization develop similar awareness.</p>';
+            } else if (percentage >= 60) {
+                interpretation = '<h4>Moderate Readiness</h4><p>You have good foundational awareness but may still be vulnerable in certain emotional contexts. Focus on the areas identified below to strengthen your defenses.</p>';
+            } else if (percentage >= 40) {
+                interpretation = '<h4>Developing Readiness</h4><p>You\'re building awareness but have significant areas for growth. The good news: these skills are learnable. Focus on recognizing the emotional triggers that affect you most.</p>';
+            } else {
+                interpretation = '<h4>Building Foundation</h4><p>You may be more susceptible to emotional manipulation tactics. This assessment is your first step toward building stronger defenses. Everyone starts somewhere.</p>';
+            }
+            
+            document.getElementById('scoreInterpretation').innerHTML = interpretation;
+            
+            // Generate focus areas based on lowest scores
+            const areaScores = [
+                { name: 'Synthetic Familiarity', score: (answers.q1a || 0) + (answers.q1b || 0), icon: '🎭', color: 'rgba(88, 166, 255, 0.15)', tip: 'Practice verifying identity through separate channels, especially when voice or video seems "perfect."' },
+                { name: 'Performance Reflex', score: (answers.q2a || 0) + (answers.q2b || 0), icon: '⚡', color: 'rgba(45, 212, 191, 0.15)', tip: 'Build in automatic pauses before responding to urgent financial requests.' },
+                { name: 'Empathic Camouflage', score: (answers.q3a || 0) + (answers.q3b || 0), icon: '💝', color: 'rgba(245, 158, 11, 0.15)', tip: 'Remember that protecting data IS protecting the people you care about.' },
+                { name: 'Deference Drift', score: (answers.q4a || 0) + (answers.q4b || 0), icon: '👔', color: 'rgba(244, 114, 182, 0.15)', tip: 'Legitimate authority welcomes verification. Suspicion of questions is a red flag.' },
+                { name: 'Prestige Mirage', score: (answers.q5a || 0) + (answers.q5b || 0), icon: '🎪', color: 'rgba(167, 139, 250, 0.15)', tip: 'Verify file sources independently, especially when curiosity is triggered.' },
+                { name: 'Duty Exploitation', score: (answers.q6a || 0) + (answers.q6b || 0), icon: '📚', color: 'rgba(248, 81, 73, 0.15)', tip: 'Process exists to protect everyone. Following it IS fulfilling your duty.' }
+            ];
+            
+            areaScores.sort((a, b) => a.score - b.score);
+            
+            areaScores.slice(0, 3).forEach(area => {
+                focusHTML += `
+                    <div class="focus-item">
+                        <div class="focus-icon" style="background: ${area.color}">${area.icon}</div>
+                        <div class="focus-content">
+                            <h4>${area.name}</h4>
+                            <p>${area.tip}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('focusContent').innerHTML = focusHTML;
+            showSection(totalSections);
+        }
+
+        function resetAssessment() {
+            answers = {};
+            document.querySelectorAll('.option.selected, .scale-option.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+            });
+            document.querySelectorAll('[id^="next"]').forEach(btn => {
+                btn.disabled = true;
+            });
+            showSection(0);
+        }
+
+        // Initialize
+        showSection(0);
+    </script>
+</body>
+</html>
