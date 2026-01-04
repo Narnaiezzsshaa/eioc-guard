@@ -108,6 +108,32 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 
 ---
 
+## Publications
+
+The EIOC framework is documented in the following peer-citeable preprints:
+
+| Paper | DOI |
+|-------|-----|
+| EIOC Canonical Framework | [10.5281/zenodo.18091270](https://doi.org/10.5281/zenodo.18091270) |
+| EIOC Authority Separation | [10.5281/zenodo.18148425](https://doi.org/10.5281/zenodo.18148425) |
+| 2025 Threat Almanac | [10.5281/zenodo.18148600](https://doi.org/10.5281/zenodo.18148600) |
+| Model-First Reasoning × Myth-Tech | [10.5281/zenodo.18058049](https://doi.org/10.5281/zenodo.18058049) |
+
+## Citation
+
+If you use EIOC in your work, please cite:
+```bibtex
+@misc{truong2025eioc,
+  author = {Truong, Narnaiezzsshaa},
+  title = {Emotional Indicators of Compromise (EIOC): A Framework for Detecting Emotional Boundary Breaches Using Cybersecurity Logic},
+  year = {2025},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.18091270}
+}
+```
+
+---
+
 ## Contact
 
 **Soft Armor Labs**
@@ -118,7 +144,7 @@ See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual propert
 
 ## License
 
-© 2024-2025 Soft Armor Labs. All Rights Reserved.
+© 2024-2026 Soft Armor Labs. All Rights Reserved.
 
 This software and associated documentation are proprietary and confidential. See [LICENSE](LICENSE) for terms.
 
