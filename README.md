@@ -85,7 +85,7 @@ This repository contains proprietary intellectual property of Soft Armor Labs.
 - Public disclosure via LinkedIn October 2025
 - Related concepts published in author's cybersecurity book series (Amazon KDP)
 
-See [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete intellectual property documentation.
+See [IP-DOCUMENTATION.md](/LEGAL/IP-DOCUMENTATION.md) for complete intellectual property documentation.
 
 ---
 
