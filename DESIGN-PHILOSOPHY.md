@@ -1,6 +1,6 @@
 # Design Philosophy: Zero-Infrastructure, Maximum Resilience
 
-EIOC Guard is intentionally delivered as a single, self-contained HTML file.
+EIOC Guard™ is intentionally delivered as a single, self-contained HTML file.
 
 **This is not a shortcut. It is the architecture.**
 
@@ -37,7 +37,7 @@ A single HTML file does.
 
 ## Who This Design Serves
 
-This architecture makes EIOC Guard deployable by:
+This architecture makes EIOC Guard™ deployable by:
 
 - An HR manager at a 15-person company
 - A clinician in an air-gapped healthcare environment
