@@ -38,7 +38,7 @@ Each layer multiplies value without replacing what's beneath it.
 
 ## Role-Specific Vulnerability Profiling Matrix
 
-> **Note:** The scenarios below are baseline examples. For **emotionally-layered versions** that demonstrate sophisticated social engineering (exploiting trust, continuity, empathy, guilt, and urgency), see [SCENARIO-PLAYBOOK.md](SCENARIO-PLAYBOOK.md) and [COMPARISON.md](COMPARISON.md).
+> **Note:** The scenarios below are baseline examples. For **emotionally-layered versions** that demonstrate sophisticated social engineering (exploiting trust, continuity, empathy, guilt, and urgency), see [SCENARIO-PLAYBOOK.md](../SCENARIOS/SCENARIO-PLAYBOOK.md) and [COMPARISON.md](COMPARISON.md).
 
 ### 🏥 Healthcare Industry
 
