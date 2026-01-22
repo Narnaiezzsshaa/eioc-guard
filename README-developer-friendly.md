@@ -149,7 +149,7 @@ Current scenarios address emerging attack vectors:
 
 ## 📄 License & IP
 
-**© 2024-2025 Soft Armor Labs. All Rights Reserved.**
+**© 2024-2026 Soft Armor Labs. All Rights Reserved.**
 
 This is proprietary software. The public demo is provided for evaluation purposes.
 
@@ -187,7 +187,7 @@ See [LICENSE](LICENSE) and [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for comple
 | v2.0 | 🔄 Planned | Analytics dashboard, organizational rollup |
 | v3.0 | 📋 Roadmap | API integration, LMS SCORM package, custom branding |
 
-See [ROADMAP.md](ROADMAP.md) for detailed development plans.
+See [ROADMAP.md](BUSINESS/ROADMAP.md) for detailed development plans.
 
 ---
 
