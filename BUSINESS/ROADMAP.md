@@ -195,7 +195,7 @@ EIOC Guard™ can be offered as:
 
 | Document | Purpose |
 |----------|---------|
-| [README.md](README.md) | Project overview and quick start |
+| [README.md](../README.md) | Project overview and quick start |
 | [LICENSE.md](LICENSE.md) | Humanitarian use provisions + commercial terms |
 | [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) | Prior art and ownership record |
 | [ACQUISITION-SUMMARY.md](ACQUISITION-SUMMARY.md) | Executive overview for potential acquirers |
