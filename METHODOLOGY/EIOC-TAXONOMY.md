@@ -86,8 +86,8 @@ Each EIOC variant shares core principles:
 ## Related Documentation
 
 - [EIOC Guard™ Assessment Tool](https://narnaiezzsshaa.github.io/eioc-guard/eioc-guard-public.html)
-- [IP Documentation](./IP-DOCUMENTATION.md)
-- [Framework Overview](./README.md)
+- [IP Documentation](../LEGAL/IP-DOCUMENTATION.md)
+- [Framework Overview](../README.md)
 
 ---
 
