@@ -445,14 +445,14 @@ With these enhancements, EIOC Guard becomes:
 
 | Document | Relationship to This Methodology |
 |----------|----------------------------------|
-| [SCENARIO-PLAYBOOK.md](SCENARIO-PLAYBOOK.md) | Source scenarios for all difficulty levels |
-| [TRAINING-SCRIPTS.md](TRAINING-SCRIPTS.md) | Base scripts for role-play variants |
-| [FACILITATOR-GUIDE.md](FACILITATOR-GUIDE.md) | Delivery principles that underpin this methodology |
-| [COMPARISON.md](COMPARISON.md) | Generic vs. EIOC differentiation |
-| [ROADMAP.md](ROADMAP.md) | Product vision and development status |
+| [SCENARIO-PLAYBOOK.md](../SCENARIOS/SCENARIO-PLAYBOOK.md) | Source scenarios for all difficulty levels |
+| [TRAINING-SCRIPTS.md](../DEPLOYMENT/TRAINING-SCRIPTS.md) | Base scripts for role-play variants |
+| [FACILITATOR-GUIDE.md](../DEPLOYMENT/FACILITATOR-GUIDE.md) | Delivery principles that underpin this methodology |
+| [COMPARISON.md](../BUSINESS/COMPARISON.md) | Generic vs. EIOC differentiation |
+| [ROADMAP.md](../BUSINESS/ROADMAP.md) | Product vision and development status |
 
 ---
 
-*© 2024-2025 Soft Armor Labs. All Rights Reserved.*
+*© 2024-2026 Soft Armor Labs. All Rights Reserved.*
 
 *EIOC Guard™ and Emotional Indicators of Compromise™ are trademarks of Soft Armor Labs.*
