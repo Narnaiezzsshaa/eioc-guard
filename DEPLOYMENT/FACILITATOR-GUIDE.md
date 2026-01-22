@@ -207,9 +207,9 @@ Always end with actionable counter-moves:
 
 | Resource | Purpose |
 |----------|---------|
-| [COMPARISON.md](COMPARISON.md) | Side-by-side scenario table for projection |
-| [SCENARIO-PLAYBOOK.md](SCENARIO-PLAYBOOK.md) | Full scenario library with prompts |
-| [ROADMAP.md](ROADMAP.md) | Framework overview and expansion plan |
+| [COMPARISON.md](../BUSINESS/COMPARISON.md) | Side-by-side scenario table for projection |
+| [SCENARIO-PLAYBOOK.md](../SCENARIOS/SCENARIO-PLAYBOOK.md) | Full scenario library with prompts |
+| [ROADMAP.md](../BUSINESS/ROADMAP.md) | Framework overview and expansion plan |
 
 ---
 
@@ -222,7 +222,7 @@ Always end with actionable counter-moves:
 
 ---
 
-*© 2024-2025 Soft Armor Labs. All Rights Reserved.*
+*© 2024-2026 Soft Armor Labs. All Rights Reserved.*
 
 *EIOC Guard™ and Emotional Indicators of Compromise™ are trademarks of Soft Armor Labs.*
 
