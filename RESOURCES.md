@@ -20,7 +20,7 @@ The flagship training tool. Six scenario-based modules targeting emotional manip
 
 | Resource | Description | License |
 |----------|-------------|---------|
-| **[The League of Digital Justice](league-of-digital-justice.pdf)** | Full theoretical framework (47 pages) | CC BY 4.0 |
+| **[The League of Digital Justice](/THEORY/league-of-digital-justice.pdf)** | Full theoretical framework (47 pages) | CC BY 4.0 |
 
 The methodology beneath the tool. Introduces six cognitive archetypes for security practice:
 
@@ -44,8 +44,8 @@ Truong, N. (2026). *The League of Digital Justice: Six Alter Egos for a Human-Ce
 
 | Resource | Description | License |
 |----------|-------------|---------|
-| **[EIOC Incident Response Template](eioc-ir-template.pdf)** | Six-mode IR methodology | CC BY 4.0 |
-| **[Self-Assessment Quiz](league-self-assessment-quiz.pdf)** | Practitioner archetype diagnostic | CC BY 4.0 |
+| **[EIOC Incident Response Template](/OPERATIONS/eioc-ir-template.pdf)** | Six-mode IR methodology | CC BY 4.0 |
+| **[Self-Assessment Quiz](/OPERATIONS/league-self-assessment-quiz.pdf)** | Practitioner archetype diagnostic | CC BY 4.0 |
 
 ### EIOC IR Template
 
