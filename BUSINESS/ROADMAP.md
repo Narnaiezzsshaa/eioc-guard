@@ -201,7 +201,7 @@ EIOC Guard™ can be offered as:
 | [ACQUISITION-SUMMARY.md](ACQUISITION-SUMMARY.md) | Executive overview for potential acquirers |
 | [COMPARISON.md](COMPARISON.md) | Generic vs. EIOC scenarios at a glance |
 | [SCENARIO-PLAYBOOK.md](../SCENARIOS/SCENARIO-PLAYBOOK.md) | Full emotionally-layered scenario library |
-| [SCENARIO-BANK.md](../SCEANRIOS/SCENARIO-BANK.md) | 88 rotating variants across 22 roles (anti-memorization) |
+| [SCENARIO-BANK.md](../SCENARIOS/SCENARIO-BANK.md) | 88 rotating variants across 22 roles (anti-memorization) |
 | [FACILITATOR-GUIDE.md](../DEPLOYMENT/FACILITATOR-GUIDE.md) | Training delivery principles and methods |
 | [TRAINING-SCRIPTS.md](../DEPLOYMENT/TRAINING-SCRIPTS.md) | Modular workshop scripts by industry |
 | [TRAINING-METHODOLOGY.md](../METHODOLOGY/TRAINING-METHODOLOGY.md) | Advanced features: metrics, adaptive difficulty, cultural variants |
