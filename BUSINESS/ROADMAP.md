@@ -196,15 +196,15 @@ EIOC Guard™ can be offered as:
 | Document | Purpose |
 |----------|---------|
 | [README.md](../README.md) | Project overview and quick start |
-| [LICENSE.md](LICENSE.md) | Humanitarian use provisions + commercial terms |
-| [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) | Prior art and ownership record |
+| [LICENSE.md](L../LICENSE.md) | Humanitarian use provisions + commercial terms |
+| [IP-DOCUMENTATION.md](../LEGAL/IP-DOCUMENTATION.md) | Prior art and ownership record |
 | [ACQUISITION-SUMMARY.md](ACQUISITION-SUMMARY.md) | Executive overview for potential acquirers |
 | [COMPARISON.md](COMPARISON.md) | Generic vs. EIOC scenarios at a glance |
-| [SCENARIO-PLAYBOOK.md](SCENARIO-PLAYBOOK.md) | Full emotionally-layered scenario library |
-| [SCENARIO-BANK.md](SCENARIO-BANK.md) | 88 rotating variants across 22 roles (anti-memorization) |
-| [FACILITATOR-GUIDE.md](FACILITATOR-GUIDE.md) | Training delivery principles and methods |
-| [TRAINING-SCRIPTS.md](TRAINING-SCRIPTS.md) | Modular workshop scripts by industry |
-| [TRAINING-METHODOLOGY.md](TRAINING-METHODOLOGY.md) | Advanced features: metrics, adaptive difficulty, cultural variants |
+| [SCENARIO-PLAYBOOK.md](../SCENARIOS/SCENARIO-PLAYBOOK.md) | Full emotionally-layered scenario library |
+| [SCENARIO-BANK.md](../SCEANRIOS/SCENARIO-BANK.md) | 88 rotating variants across 22 roles (anti-memorization) |
+| [FACILITATOR-GUIDE.md](../DEPLOYMENT/FACILITATOR-GUIDE.md) | Training delivery principles and methods |
+| [TRAINING-SCRIPTS.md](../DEPLOYMENT/TRAINING-SCRIPTS.md) | Modular workshop scripts by industry |
+| [TRAINING-METHODOLOGY.md](../METHODOLOGY/TRAINING-METHODOLOGY.md) | Advanced features: metrics, adaptive difficulty, cultural variants |
 | [PRODUCT-SPEC.md](PRODUCT-SPEC.md) | Scenario generation engine specification (for technology build) |
 
 ---
@@ -259,7 +259,7 @@ EIOC Guard™ can be offered as:
 | **Executive Briefing** | 30 min | Finance + one other high-risk industry |
 | **Full Curriculum** | Half-day | All industries, with breaks |
 
-See [TRAINING-SCRIPTS.md](TRAINING-SCRIPTS.md) for ready-to-run workshop modules.
+See [TRAINING-SCRIPTS.md](../DEPLOYMENT/TRAINING-SCRIPTS.md) for ready-to-run workshop modules.
 
 ---
 
