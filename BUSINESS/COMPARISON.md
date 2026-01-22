@@ -81,6 +81,6 @@ That's a different skill. That's what sophisticated social engineering actually 
 
 ---
 
-*© 2024-2025 Soft Armor Labs. All Rights Reserved.*
+*© 2024-2026 Soft Armor Labs. All Rights Reserved.*
 
 *EIOC Guard™ and Emotional Indicators of Compromise™ are trademarks of Soft Armor Labs.*
