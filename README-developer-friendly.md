@@ -159,7 +159,7 @@ This is proprietary software. The public demo is provided for evaluation purpose
 - Stewardship Cues™ defensive framework
 - All scenarios, assessments, and documentation
 
-See [LICENSE](LICENSE) and [IP-DOCUMENTATION.md](IP-DOCUMENTATION.md) for complete terms.
+See [LICENSE](LICENSE) and [IP-DOCUMENTATION.md](LEGAL/IP-DOCUMENTATION.md) for complete terms.
 
 **Permitted:** Personal evaluation, academic research with attribution  
 **Requires license:** Commercial use, redistribution, derivative works, enterprise deployment
