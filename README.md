@@ -1,3 +1,5 @@
+> **Technical evaluators:** See [README-DEVELOPER.md](README-DEVELOPER.md) for deployment specs and quick start.
+
 # EIOC Guard™
 
 **Emotional Indicators of Compromise—Security Awareness Training That Works With Human Psychology**
