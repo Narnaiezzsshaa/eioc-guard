@@ -85,7 +85,7 @@ Detection strategies must treat linguistic creativity as both signal and shield.
 ## Related Documentation
 
 - [EIOC Taxonomy](EIOC-TAXONOMY.md)
-- [Implementation Grid](IMPLEMENTATION-GRID.md)
+- [Implementation Grid](../DEPLOYMENT/IMPLEMENTATION-GRID.md)
 
 ---
 
