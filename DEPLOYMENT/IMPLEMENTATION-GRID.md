@@ -51,8 +51,8 @@ This grid shows how linguistic creativity can be celebrated while still being mo
 
 ## Related Documentation
 
-- [EIOC Taxonomy](EIOC-TAXONOMY.md)
-- [Detection Strategies](DETECTION-STRATEGIES.md)
+- [EIOC Taxonomy](../METHODOLOGY/EIOC-TAXONOMY.md)
+- [Detection Strategies](../METHODOLOGY/DETECTION-STRATEGIES.md)
 
 ---
 
