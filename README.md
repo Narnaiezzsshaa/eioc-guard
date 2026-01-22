@@ -1,4 +1,5 @@
 > **Technical evaluators:** See [README-DEVELOPER.md](README-DEVELOPER.md) for deployment specs and quick start.
+> > **Exploring the full ecosystem?** See [RESOURCES.md](RESOURCES.md) for the complete product family including the League of Digital Justice framework, IR templates, and practitioner diagnostics.
 
 # EIOC Guard™
 
