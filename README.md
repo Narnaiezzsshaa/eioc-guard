@@ -1,3 +1,5 @@
+Commercial licensing & framework details: narnaiezzsshaa.substack.com/p/soft-armor-labs
+
 EIOC Guard implements the [EIOC Open Standard](https://github.com/Narnaiezzsshaa/eioc).
 
 > **Technical evaluators:** See [README-DEVELOPER.md](README-DEVELOPER.md) for deployment specs and quick start.
